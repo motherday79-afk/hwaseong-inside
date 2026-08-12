@@ -1,55 +1,21 @@
-const newsItems = [
-  {
-    title: '5월 정기 네트워킹 행사 안내',
-    desc: '화성인사이드 5월 멤버들과 함께 새로운 연결을 만들어보세요.',
-    date: '2025.05.23',
-    image: '/assets/ui/news-1.png'
-  },
-  {
-    title: '2025 화성 어워즈 후보 공모',
-    desc: '올해를 빛낸 화성의 인재를 추천해주세요.',
-    date: '2025.05.15',
-    image: '/assets/ui/news-2.png'
-  },
-  {
-    title: '신규 그룹장 모집 안내',
-    desc: '새로운 네트워크 그룹을 함께 이끌어갈 리더를 기다립니다.',
-    date: '2025.05.01',
-    image: '/assets/ui/news-3.png'
-  }
+const featured = [
+  [1, 14.878, 43.481], [2, 29.118, 43.481], [3, 43.464, 43.481], [4, 57.811, 43.481], [5, 72.157, 43.481],
+  [6, 14.878, 51.794], [7, 29.118, 51.794], [8, 43.464, 51.794], [9, 57.811, 51.794], [10, 72.157, 51.794]
 ];
 
-const featuredHotspots = [
-  { id: '1', left: 14.8, top: 21.5 },
-  { id: '2', left: 29.2, top: 21.5 },
-  { id: '3', left: 43.6, top: 21.5 },
-  { id: '4', left: 58.0, top: 21.5 },
-  { id: '5', left: 72.4, top: 21.5 },
-  { id: '6', left: 14.8, top: 60.5 },
-  { id: '7', left: 29.2, top: 60.5 },
-  { id: '8', left: 43.6, top: 60.5 },
-  { id: '9', left: 58.0, top: 60.5 },
-  { id: '10', left: 72.4, top: 60.5 }
-];
-
-const regularHotspots = Array.from({ length: 20 }, (_, i) => {
-  const col = i % 10;
-  const row = Math.floor(i / 10);
-  const cols = [7.8, 15.2, 22.7, 30.1, 37.5, 45.0, 52.4, 59.8, 67.3, 74.7];
-  const tops = [18.8, 58.0];
-  return {
-    id: String(i + 11),
-    left: cols[col],
-    top: tops[row]
-  };
+const regularX = [10.627, 18.491, 26.461, 34.325, 42.295, 50.159, 58.13, 65.994, 73.964, 81.828];
+const regular = Array.from({ length: 20 }, (_, index) => {
+  const row = Math.floor(index / 10);
+  const col = index % 10;
+  return [index + 11, regularX[col], row === 0 ? 79.187 : 84.749];
 });
 
-function Hotspot({ href, left, top, width, height, label }) {
+function Hotspot({ href, left, top, width, height, label, className = '' }) {
   return (
     <a
       href={href}
-      className="hotspot"
       aria-label={label}
+      className={`mainHotspot ${className}`}
       style={{ left: `${left}%`, top: `${top}%`, width: `${width}%`, height: `${height}%` }}
     />
   );
@@ -57,64 +23,67 @@ function Hotspot({ href, left, top, width, height, label }) {
 
 export default function Home() {
   return (
-    <main className="mainImageLock">
-      <div className="artboard">
-        <img className="sectionImage" src="/assets/mockup/top-lockup.png" alt="화성인사이드 메인 상단 시안" />
+    <main className="exactMain" id="top">
+      <div className="exactArtboard">
+        <img
+          src="/assets/mockup/main-page-reference.png"
+          alt="화성인사이드 메인페이지"
+          className="exactMainImage"
+        />
 
-        <img className="sectionImage" src="/assets/mockup/chair-lockup.png" alt="의장 인사 영상과 인사말" />
+        <span id="about" className="anchorPoint" style={{ top: '5%' }} />
+        <span id="network" className="anchorPoint" style={{ top: '21%' }} />
+        <span id="news" className="anchorPoint" style={{ top: '60%' }} />
+        <span id="community" className="anchorPoint" style={{ top: '74%' }} />
+        <span id="login" className="anchorPoint" style={{ top: '0%' }} />
+        <span id="join" className="anchorPoint" style={{ top: '12%' }} />
 
-        <section className="interactiveImageSection featureSection">
-          <img className="sectionImage" src="/assets/mockup/featured-lockup.png" alt="Featured 10 멤버 섹션" />
-          {featuredHotspots.map((spot) => (
-            <Hotspot
-              key={spot.id}
-              href={`/members/${spot.id}`}
-              left={spot.left}
-              top={spot.top}
-              width={11.2}
-              height={28}
-              label={`Featured member ${spot.id}`}
-            />
-          ))}
-        </section>
+        <Hotspot href="/" left={7.439} top={0.598} width={12.221} height={2.512} label="화성인사이드 홈" />
+        <Hotspot href="#about" left={53.666} top={0.718} width={4.251} height={2.153} label="소개" />
+        <Hotspot href="#network" left={58.98} top={0.718} width={5.632} height={2.153} label="네트워크" />
+        <Hotspot href="#news" left={65.675} top={0.718} width={6.589} height={2.153} label="공지와 뉴스" />
+        <Hotspot href="#community" left={73.326} top={0.718} width={5.739} height={2.153} label="커뮤니티" />
+        <Hotspot href="#login" left={79.171} top={0.718} width={4.782} height={2.153} label="로그인" />
+        <Hotspot href="#join" left={84.272} top={0.478} width={6.908} height={2.632} label="회원가입" />
 
-        <section className="newsReplica" aria-label="공지와 뉴스">
-          <div className="newsHeaderRow">
-            <h2>📣 공지 & 뉴스</h2>
-            <a href="#">전체보기 ›</a>
-          </div>
-          <div className="newsReplicaGrid">
-            {newsItems.map((item) => (
-              <article key={item.title}>
-                <img src={item.image} alt="" />
-                <div>
-                  <h3>
-                    {item.title} <em>NEW</em>
-                  </h3>
-                  <p>{item.desc}</p>
-                  <small>{item.date}</small>
-                </div>
-              </article>
-            ))}
-          </div>
-        </section>
+        <Hotspot href="#join" left={11.371} top={14.952} width={12.965} height={2.99} label="지금 가입하기" />
+        <Hotspot href="#network" left={25.08} top={14.952} width={12.434} height={2.99} label="더 알아보기" />
 
-        <section className="interactiveImageSection regularSectionLockup">
-          <img className="sectionImage" src="/assets/mockup/regular-lockup.png" alt="40인 멤버 섹션" />
-          {regularHotspots.map((spot) => (
-            <Hotspot
-              key={spot.id}
-              href={`/members/${spot.id}`}
-              left={spot.left}
-              top={spot.top}
-              width={6.7}
-              height={24.5}
-              label={`Regular member ${spot.id}`}
-            />
-          ))}
-        </section>
+        <Hotspot href="#network" left={9.777} top={22.548} width={46.652} height={14.175} label="의장 인사 영상" className="videoHotspot" />
 
-        <img className="sectionImage" src="/assets/mockup/footer-lockup.png" alt="화성인사이드 푸터" />
+        {featured.map(([id, left, top]) => (
+          <Hotspot
+            key={`featured-${id}`}
+            href={`/members/${id}`}
+            left={left}
+            top={top}
+            width={11.69}
+            height={7.895}
+            label={`Featured ${id} 멤버 상세보기`}
+            className="cardHotspot"
+          />
+        ))}
+
+        <Hotspot href="#news" left={81.828} top={61.603} width={6.057} height={1.854} label="공지 뉴스 전체보기" />
+        <Hotspot href="#news" left={10.202} top={63.577} width={24.867} height={9.211} label="첫 번째 공지 보기" className="newsHotspot" />
+        <Hotspot href="#news" left={36.557} top={63.577} width={25.08} height={9.211} label="두 번째 공지 보기" className="newsHotspot" />
+        <Hotspot href="#news" left={63.018} top={63.577} width={25.399} height={9.211} label="세 번째 공지 보기" className="newsHotspot" />
+
+        <Hotspot href="/members" left={80.234} top={75.658} width={8.183} height={2.333} label="전체 멤버 보기" />
+        {regular.map(([id, left, top]) => (
+          <Hotspot
+            key={`regular-${id}`}
+            href={`/members/${id}`}
+            left={left}
+            top={top}
+            width={7.014}
+            height={5.084}
+            label={`${id}번 멤버 상세보기`}
+            className="regularHotspot"
+          />
+        ))}
+        <Hotspot href="/members" left={43.677} top={89.474} width={11.265} height={2.033} label="멤버 더 보기" />
+        <Hotspot href="#top" left={88.948} top={94.199} width={4.782} height={2.931} label="맨 위로" />
       </div>
     </main>
   );
