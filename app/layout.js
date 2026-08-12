@@ -1,0 +1,14 @@
+import './globals.css';
+
+export const metadata = {
+  title: '화성인사이드',
+  description: '화성의 사람과 가치를 연결하는 프리미엄 네트워크'
+};
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="ko">
+      <body>{children}</body>
+    </html>
+  );
+}
