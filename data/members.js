@@ -41,7 +41,9 @@ export const members = names.map(([name, job], index) => ({
     '재능': 72 + ((index * 2) % 20),
     '협업': 75 + ((index * 4) % 18)
   },
-  colors: colors[index % colors.length]
+  colors: colors[index % colors.length],
+  image: `/assets/members/member-${String((index % 30)+1).padStart(2,'0')}.png`,
+  profileImage: index === 1 ? '/assets/members/profile-02.png' : `/assets/members/member-${String((index % 30)+1).padStart(2,'0')}.png`
 }));
 
 export const getMember = (id) => members.find(m => m.id === String(id)) || members[1];
