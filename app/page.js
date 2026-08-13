@@ -26,9 +26,13 @@ export default function Home() {
     <main className="exactMain" id="top">
       <div className="exactArtboard">
         <img
-          src="/assets/mockup/main-page-reference.png"
+          src="/assets/mockup/main-page-reference@3x.png"
           alt="화성인사이드 메인페이지"
           className="exactMainImage"
+          width="2823"
+          height="5016"
+          decoding="sync"
+          draggable="false"
         />
 
         <span id="about" className="anchorPoint" style={{ top: '5%' }} />

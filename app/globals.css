@@ -10,7 +10,7 @@
 }
 .exactArtboard{
   position:relative;
-  width:min(1360px,100vw);
+  width:min(1180px,100vw);
   margin:0 auto;
   line-height:0;
 }
@@ -52,4 +52,23 @@
 @media(max-width:700px){
   .exactArtboard{width:100vw;}
   .mainHotspot:hover{box-shadow:none;background:transparent;}
+}
+
+
+/* v8 resolution fix: never upscale the low-res 941px raster.
+   The page now uses a 2823px (3x) master and renders it at max 1180 CSS px. */
+.exactArtboard{
+  width:min(1180px,100vw);
+  max-width:1180px;
+  aspect-ratio:941 / 1672;
+}
+.exactMainImage{
+  width:100%;
+  height:auto;
+  image-rendering:auto;
+  transform:translateZ(0);
+  backface-visibility:hidden;
+}
+@media(max-width:1180px){
+  .exactArtboard{width:100vw;max-width:100vw;}
 }
