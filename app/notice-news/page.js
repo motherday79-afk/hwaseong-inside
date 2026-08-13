@@ -62,15 +62,15 @@ export default function NoticeNewsPage() {
         <Spot href="/notice-news" label="다음 페이지" x={590} y={1369} w={29} h={31} round="10px" />
 
         {/* CTA */}
-        <Spot href="/members/2" label="네트워크 요청하기" x={634} y={1466} w={180} h={48} round="12px" />
-        <Spot href="/members/2" label="메시지 보내기" x={831} y={1466} w={143} h={48} round="12px" />
+        <Spot href="/members/2" label="네트워크 요청하기" x={506} y={1410} w={182} h={48} round="12px" />
+        <Spot href="/members/2" label="메시지 보내기" x={704} y={1410} w={177} h={48} round="12px" />
 
         {/* footer */}
-        <Spot href="/" label="푸터 화성인사이드 홈" x={39} y={1534} w={187} h={111} round="18px" />
-        <Spot href="/#about" label="푸터 링크 모음" x={318} y={1535} w={139} h={119} />
-        <Spot href="/#about" label="푸터 이용 안내" x={537} y={1535} w={128} h={108} />
-        <Spot href="/#about" label="푸터 문의 안내" x={732} y={1535} w={129} h={105} />
-        <Spot href="#" label="맨 위로" x={887} y={1609} w={45} h={45} round="50%" />
+        <Spot href="/" label="푸터 화성인사이드 홈" x={43} y={1488} w={210} h={142} round="18px" />
+        <Spot href="/#about" label="푸터 링크 모음" x={310} y={1488} w={155} h={150} />
+        <Spot href="/#about" label="푸터 이용 안내" x={522} y={1488} w={145} h={142} />
+        <Spot href="/#about" label="푸터 문의 안내" x={693} y={1488} w={170} h={132} />
+        <Spot href="#" label="맨 위로" x={861} y={1580} w={50} h={50} round="50%" />
       </div>
     </main>
   );

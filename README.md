@@ -1,4 +1,4 @@
-# Hwaseong Inside - News master web v1
+# Hwaseong Inside - News master web v1.1
 
 이번 버전은 기존 메인/상세 마스터 방식 그대로,
 공지 & 뉴스 섹션을 **웹마스터 이미지 + 완전 투명 클릭맵** 구조로 추가한 풀파일입니다.
@@ -19,3 +19,10 @@
 2. GitHub `hwaseong-inside` 저장소 루트에 전체 덮어쓰기
 3. Commit changes
 4. Vercel 자동 배포 확인
+
+
+## v1.1 cross-check fixes
+- 공지 목록 하단 CTA 두 버튼 클릭좌표 정밀 보정
+- 공지 목록 푸터/맨위로 클릭좌표 보정
+- 공지 상세 참가신청/관련공지/목록복귀/푸터/맨위로 클릭좌표 보정
+- 마스터 이미지는 변경 없음

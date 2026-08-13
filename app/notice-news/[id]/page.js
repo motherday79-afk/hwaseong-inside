@@ -36,24 +36,24 @@ export default async function NoticeDetail({ params }) {
         <Spot href="/notice-news/1" label="상세" x={210} y={66} w={45} h={23} />
 
         {/* CTA inside article */}
-        <Spot href="/members/2" label="참가 신청하기" x={683} y={1299} w={164} h={41} round="10px" />
+        <Spot href="/members/2" label="참가 신청하기" x={645} y={1171} w={166} h={43} round="10px" />
 
         {/* related news */}
-        <Spot href="/notice-news" label="관련 공지 전체보기" x={860} y={1396} w={55} h={24} />
-        <Spot href="/notice-news/2" label="관련 공지 2025 화성 어워즈 후보 공모" x={82} y={1416} w={250} h={151} round="16px" />
-        <Spot href="/notice-news/3" label="관련 공지 신규 그룹장 모집 안내" x={345} y={1416} w={250} h={151} round="16px" />
-        <Spot href="/notice-news/4" label="관련 공지 4월 클래스 일정 안내" x={608} y={1416} w={250} h={151} round="16px" />
-        <Spot href="/notice-news" label="관련 공지 다음" x={866} y={1452} w={31} h={38} round="18px" />
+        <Spot href="/notice-news" label="관련 공지 전체보기" x={790} y={1240} w={65} h={27} />
+        <Spot href="/notice-news/2" label="관련 공지 2025 화성 어워즈 후보 공모" x={83} y={1269} w={242} h={143} round="16px" />
+        <Spot href="/notice-news/3" label="관련 공지 신규 그룹장 모집 안내" x={342} y={1269} w={240} h={143} round="16px" />
+        <Spot href="/notice-news/4" label="관련 공지 4월 클래스 일정 안내" x={599} y={1269} w={240} h={143} round="16px" />
+        <Spot href="/notice-news" label="관련 공지 다음" x={824} y={1296} w={34} h={40} round="18px" />
 
         {/* back to list */}
-        <Spot href="/notice-news" label="목록으로 돌아가기" x={365} y={1586} w={213} h={37} round="18px" />
+        <Spot href="/notice-news" label="목록으로 돌아가기" x={365} y={1418} w={188} h={39} round="18px" />
 
         {/* footer */}
-        <Spot href="/" label="푸터 화성인사이드 홈" x={31} y={1630} w={185} h={42} round="18px" />
-        <Spot href="/#about" label="푸터 링크 모음" x={317} y={1630} w={138} h={40} />
-        <Spot href="/#about" label="푸터 이용 안내" x={542} y={1630} w={126} h={40} />
-        <Spot href="/#about" label="푸터 문의 안내" x={734} y={1630} w={126} h={40} />
-        <Spot href="#" label="맨 위로" x={890} y={1611} w={43} h={43} round="50%" />
+        <Spot href="/" label="푸터 화성인사이드 홈" x={31} y={1473} w={235} h={150} round="18px" />
+        <Spot href="/#about" label="푸터 링크 모음" x={305} y={1473} w={165} h={145} />
+        <Spot href="/#about" label="푸터 이용 안내" x={510} y={1473} w={150} h={135} />
+        <Spot href="/#about" label="푸터 문의 안내" x={690} y={1473} w={160} h={128} />
+        <Spot href="#" label="맨 위로" x={861} y={1570} w={50} h={50} round="50%" />
       </div>
     </main>
   );
