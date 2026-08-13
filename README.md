@@ -1,11 +1,7 @@
-# 화성인사이드 v8 — 메인 해상도 수정본
+# Hwaseong Inside — Main Rebuild v1
 
-이번 버전은 메인페이지의 **해상도/스케일링 문제만 우선 해결**했습니다.
-
-- 941×1672 원본을 브라우저에서 1360px까지 늘리던 방식 제거
-- 메인 기준 이미지를 2823×5016(3x) 고밀도 마스터로 교체
-- 데스크톱 표시 폭 최대 1180px로 제한
-- 기존 퍼센트 기반 클릭 좌표 유지 → 이미지 확대/축소와 함께 정확히 이동
-- 상세페이지 구조는 기존 유지
-
-GitHub 웹에서 이 폴더의 내용물을 저장소 루트에 덮어쓴 뒤 Commit changes 하면 Vercel이 자동 배포합니다.
+- Main page rebuilt as a new 2823×5016 high-resolution master asset.
+- Main page is rendered as one visual image to preserve layout, fonts, spacing, and composition.
+- Interactive hotspots use percentages derived from the same 941×1672 coordinate system, so click areas scale with the image.
+- Member cards 1–30 link to existing profile routes.
+- Existing detail/profile page implementation is preserved.

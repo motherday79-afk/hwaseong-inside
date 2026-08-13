@@ -1,93 +1,93 @@
 const featured = [
-  [1, 14.878, 43.481], [2, 29.118, 43.481], [3, 43.464, 43.481], [4, 57.811, 43.481], [5, 72.157, 43.481],
-  [6, 14.878, 51.794], [7, 29.118, 51.794], [8, 43.464, 51.794], [9, 57.811, 51.794], [10, 72.157, 51.794]
+  ['1', 140, 730], ['2', 276, 730], ['3', 412, 730], ['4', 548, 730], ['5', 684, 730],
+  ['6', 140, 866], ['7', 276, 866], ['8', 412, 866], ['9', 548, 866], ['10', 684, 866]
 ];
 
-const regularX = [10.627, 18.491, 26.461, 34.325, 42.295, 50.159, 58.13, 65.994, 73.964, 81.828];
-const regular = Array.from({ length: 20 }, (_, index) => {
-  const row = Math.floor(index / 10);
-  const col = index % 10;
-  return [index + 11, regularX[col], row === 0 ? 79.187 : 84.749];
+const regular = Array.from({ length: 20 }, (_, i) => {
+  const col = i % 10;
+  const row = Math.floor(i / 10);
+  return [String(i + 11), 101 + col * 74, 1326 + row * 87];
 });
 
-function Hotspot({ href, left, top, width, height, label, className = '' }) {
+const toPercent = (value, total) => `${(value / total) * 100}%`;
+
+function Hotspot({ href, x, y, w, h, label }) {
   return (
     <a
       href={href}
+      className="rebuildHotspot"
       aria-label={label}
-      className={`mainHotspot ${className}`}
-      style={{ left: `${left}%`, top: `${top}%`, width: `${width}%`, height: `${height}%` }}
+      style={{
+        left: toPercent(x, 941),
+        top: toPercent(y, 1672),
+        width: toPercent(w, 941),
+        height: toPercent(h, 1672),
+      }}
     />
   );
 }
 
+function Anchor({ id, y }) {
+  return <span id={id} className="rebuildAnchor" style={{ top: toPercent(y, 1672) }} />;
+}
+
 export default function Home() {
   return (
-    <main className="exactMain" id="top">
-      <div className="exactArtboard">
+    <main className="rebuildMain">
+      <div className="rebuildArtboard">
         <img
-          src="/assets/mockup/main-page-reference@3x.png"
+          className="rebuildMaster"
+          src="/assets/rebuild/main-rebuild-v1@3x.png"
           alt="화성인사이드 메인페이지"
-          className="exactMainImage"
-          width="2823"
-          height="5016"
-          decoding="sync"
-          draggable="false"
         />
 
-        <span id="about" className="anchorPoint" style={{ top: '5%' }} />
-        <span id="network" className="anchorPoint" style={{ top: '21%' }} />
-        <span id="news" className="anchorPoint" style={{ top: '60%' }} />
-        <span id="community" className="anchorPoint" style={{ top: '74%' }} />
-        <span id="login" className="anchorPoint" style={{ top: '0%' }} />
-        <span id="join" className="anchorPoint" style={{ top: '12%' }} />
+        <Anchor id="about" y={80} />
+        <Anchor id="network" y={350} />
+        <Anchor id="news" y={1010} />
+        <Anchor id="community" y={1245} />
+        <Anchor id="login" y={0} />
+        <Anchor id="join" y={0} />
 
-        <Hotspot href="/" left={7.439} top={0.598} width={12.221} height={2.512} label="화성인사이드 홈" />
-        <Hotspot href="#about" left={53.666} top={0.718} width={4.251} height={2.153} label="소개" />
-        <Hotspot href="#network" left={58.98} top={0.718} width={5.632} height={2.153} label="네트워크" />
-        <Hotspot href="#news" left={65.675} top={0.718} width={6.589} height={2.153} label="공지와 뉴스" />
-        <Hotspot href="#community" left={73.326} top={0.718} width={5.739} height={2.153} label="커뮤니티" />
-        <Hotspot href="#login" left={79.171} top={0.718} width={4.782} height={2.153} label="로그인" />
-        <Hotspot href="#join" left={84.272} top={0.478} width={6.908} height={2.632} label="회원가입" />
+        {/* Header */}
+        <Hotspot href="/" x={68} y={13} w={145} h={38} label="화성인사이드 홈" />
+        <Hotspot href="#about" x={497} y={14} w={43} h={34} label="소개" />
+        <Hotspot href="#network" x={545} y={14} w={67} h={34} label="네트워크" />
+        <Hotspot href="#news" x={614} y={14} w={78} h={34} label="공지와 뉴스" />
+        <Hotspot href="#community" x={693} y={14} w={67} h={34} label="커뮤니티" />
+        <Hotspot href="#login" x={761} y={14} w={43} h={34} label="로그인" />
+        <Hotspot href="#join" x={805} y={16} w={55} h={30} label="회원가입" />
 
-        <Hotspot href="#join" left={11.371} top={14.952} width={12.965} height={2.99} label="지금 가입하기" />
-        <Hotspot href="#network" left={25.08} top={14.952} width={12.434} height={2.99} label="더 알아보기" />
+        {/* Hero */}
+        <Hotspot href="#join" x={111} y={255} w={112} h={39} label="지금 가입하기" />
+        <Hotspot href="#network" x={235} y={255} w={118} h={39} label="더 알아보기" />
 
-        <Hotspot href="#network" left={9.777} top={22.548} width={46.652} height={14.175} label="의장 인사 영상" className="videoHotspot" />
+        {/* Chairman */}
+        <Hotspot href="#network" x={93} y={378} w={441} h={236} label="의장 인사 영상" />
 
-        {featured.map(([id, left, top]) => (
-          <Hotspot
-            key={`featured-${id}`}
-            href={`/members/${id}`}
-            left={left}
-            top={top}
-            width={11.69}
-            height={7.895}
-            label={`Featured ${id} 멤버 상세보기`}
-            className="cardHotspot"
-          />
+        {/* Featured 10 */}
+        {featured.map(([id, x, y]) => (
+          <Hotspot key={id} href={`/members/${id}`} x={x} y={y} w={108} h={130} label={`Featured ${id}번 멤버`} />
         ))}
 
-        <Hotspot href="#news" left={81.828} top={61.603} width={6.057} height={1.854} label="공지 뉴스 전체보기" />
-        <Hotspot href="#news" left={10.202} top={63.577} width={24.867} height={9.211} label="첫 번째 공지 보기" className="newsHotspot" />
-        <Hotspot href="#news" left={36.557} top={63.577} width={25.08} height={9.211} label="두 번째 공지 보기" className="newsHotspot" />
-        <Hotspot href="#news" left={63.018} top={63.577} width={25.399} height={9.211} label="세 번째 공지 보기" className="newsHotspot" />
+        {/* News */}
+        <Hotspot href="#news" x={780} y={1028} w={68} h={35} label="공지 뉴스 전체보기" />
+        <Hotspot href="#news" x={98} y={1065} w={238} h={155} label="정기 네트워킹 행사 안내" />
+        <Hotspot href="#news" x={343} y={1065} w={238} h={155} label="화성 어워즈 후보 공모" />
+        <Hotspot href="#news" x={588} y={1065} w={238} h={155} label="신규 그룹장 모집 안내" />
 
-        <Hotspot href="/members" left={80.234} top={75.658} width={8.183} height={2.333} label="전체 멤버 보기" />
-        {regular.map(([id, left, top]) => (
-          <Hotspot
-            key={`regular-${id}`}
-            href={`/members/${id}`}
-            left={left}
-            top={top}
-            width={7.014}
-            height={5.084}
-            label={`${id}번 멤버 상세보기`}
-            className="regularHotspot"
-          />
+        {/* 40 members */}
+        <Hotspot href="#community" x={746} y={1262} w={90} h={31} label="전체 멤버 보기" />
+        {regular.map(([id, x, y]) => (
+          <Hotspot key={id} href={`/members/${id}`} x={x} y={y} w={66} h={78} label={`${id}번 멤버 상세보기`} />
         ))}
-        <Hotspot href="/members" left={43.677} top={89.474} width={11.265} height={2.033} label="멤버 더 보기" />
-        <Hotspot href="#top" left={88.948} top={94.199} width={4.782} height={2.931} label="맨 위로" />
+        <Hotspot href="#community" x={420} y={1502} w={102} h={32} label="멤버 더 보기" />
+
+        {/* Footer */}
+        <Hotspot href="/" x={96} y={1548} w={165} h={70} label="화성인사이드 홈" />
+        <Hotspot href="#about" x={330} y={1548} w={155} h={105} label="링크 모음" />
+        <Hotspot href="#about" x={525} y={1548} w={145} h={95} label="이용 안내" />
+        <Hotspot href="#about" x={700} y={1548} w={135} h={85} label="문의 안내" />
+        <Hotspot href="#about" x={840} y={1590} w={42} h={42} label="맨 위로" />
       </div>
     </main>
   );

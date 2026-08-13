@@ -72,3 +72,50 @@
 @media(max-width:1180px){
   .exactArtboard{width:100vw;max-width:100vw;}
 }
+
+/* Main rebuild v1: one high-resolution image + coordinate-matched interactive layer */
+.rebuildMain{
+  min-height:100vh;
+  background:#fdfcff;
+  padding:0 0 32px;
+}
+.rebuildArtboard{
+  position:relative;
+  width:min(1180px,100vw);
+  margin:0 auto;
+  aspect-ratio:941 / 1672;
+}
+.rebuildMaster{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:contain;
+  user-select:none;
+  -webkit-user-drag:none;
+}
+.rebuildHotspot{
+  position:absolute;
+  z-index:5;
+  display:block;
+  border-radius:10px;
+  background:transparent;
+  outline:none;
+}
+.rebuildHotspot:hover{
+  box-shadow:inset 0 0 0 2px rgba(117,95,255,.16);
+  background:rgba(117,95,255,.025);
+}
+.rebuildHotspot:focus-visible{
+  box-shadow:inset 0 0 0 3px rgba(117,95,255,.45);
+}
+.rebuildAnchor{
+  position:absolute;
+  left:0;
+  width:1px;
+  height:1px;
+  pointer-events:none;
+}
+@media(max-width:720px){
+  .rebuildArtboard{width:100vw;}
+  .rebuildHotspot:hover{box-shadow:none;background:transparent;}
+}
