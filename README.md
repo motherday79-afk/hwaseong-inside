@@ -1,7 +1,19 @@
-# Hwaseong Inside — Main Rebuild v1
+# Hwaseong Inside - master-web v1
 
-- Main page rebuilt as a new 2823×5016 high-resolution master asset.
-- Main page is rendered as one visual image to preserve layout, fonts, spacing, and composition.
-- Interactive hotspots use percentages derived from the same 941×1672 coordinate system, so click areas scale with the image.
-- Member cards 1–30 link to existing profile routes.
-- Existing detail/profile page implementation is preserved.
+이번 버전은 **승인된 메인 마스터 이미지**를 홈페이지에 그대로 적용한 웹용 풀파일입니다.
+
+## 포함 내용
+- 메인페이지: `/public/assets/master/main-master-v1.png` 기반
+- 메인 클릭맵: 상단 메뉴, 버튼, Featured 10, 공지 3개, 보이는 20명, 더보기/전체보기, 푸터, 맨위로
+- 상세페이지: 기존 프로필 페이지 유지
+- 멤버 목록 페이지: 기존 유지
+
+## 적용 방법
+1. ZIP 압축 해제
+2. GitHub `hwaseong-inside` 저장소 루트에 전체 덮어쓰기
+3. Commit changes
+4. Vercel 자동 배포 확인
+
+## 참고
+- 메인페이지는 이미지 품질 보존을 위해 **최대 941px 폭**으로 표시됩니다.
+- 클릭영역은 941 x 1672 기준 좌표를 퍼센트로 변환해 이미지와 함께 확대/축소됩니다.

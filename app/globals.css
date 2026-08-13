@@ -119,3 +119,52 @@
   .rebuildArtboard{width:100vw;}
   .rebuildHotspot:hover{box-shadow:none;background:transparent;}
 }
+
+/* Master-web v1: approved homepage master image + precise click map */
+.masterMain{
+  min-height:100vh;
+  background:
+    radial-gradient(circle at 14% 4%, rgba(255,236,244,.9) 0, rgba(255,236,244,0) 24%),
+    radial-gradient(circle at 88% 4%, rgba(238,230,255,.9) 0, rgba(238,230,255,0) 26%),
+    #fcfbff;
+  padding:0 0 28px;
+}
+.masterBoard{
+  position:relative;
+  width:min(941px,100vw);
+  margin:0 auto;
+  line-height:0;
+}
+.masterImage{
+  display:block;
+  width:100%;
+  height:auto;
+  user-select:none;
+  -webkit-user-drag:none;
+}
+.masterAnchor{
+  position:absolute;
+  left:0;
+  width:1px;
+  height:1px;
+  pointer-events:none;
+  scroll-margin-top:18px;
+}
+.masterSpot{
+  position:absolute;
+  z-index:10;
+  display:block;
+  background:transparent;
+  outline:none;
+}
+.masterSpot:hover{
+  box-shadow:inset 0 0 0 2px rgba(114,89,255,.18);
+  background:rgba(114,89,255,.035);
+}
+.masterSpot:focus-visible{
+  box-shadow:inset 0 0 0 3px rgba(114,89,255,.45);
+}
+@media (max-width: 720px){
+  .masterBoard{width:100vw;}
+  .masterSpot:hover{box-shadow:none;background:transparent;}
+}
