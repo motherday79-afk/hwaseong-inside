@@ -168,3 +168,17 @@
   .masterBoard{width:100vw;}
   .masterSpot:hover{box-shadow:none;background:transparent;}
 }
+
+/* master-web v1.1: invisible click map. No hover/focus box is ever painted. */
+.masterSpot,
+.masterSpot:hover,
+.masterSpot:focus,
+.masterSpot:focus-visible,
+.masterSpot:active{
+  background:transparent !important;
+  box-shadow:none !important;
+  outline:none !important;
+  border:none !important;
+  cursor:pointer;
+  -webkit-tap-highlight-color:transparent;
+}
