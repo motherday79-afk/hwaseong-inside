@@ -59,60 +59,34 @@ export default function Home() {
         <Anchor id="community" y={1215} />
         <Anchor id="footer" y={1490} />
 
-        {/* Header */}
         <Spot href="#top" label="화성인사이드 홈" x={34} y={12} w={150} h={43} round="22px" />
         <Spot href="#about" label="소개" x={486} y={14} w={42} h={32} />
         <Spot href="#network" label="네트워크" x={544} y={14} w={58} h={32} />
-        <Spot href="#news" label="공지와 뉴스" x={614} y={14} w={73} h={32} />
+        <Spot href="/notice-news" label="공지와 뉴스" x={614} y={14} w={73} h={32} />
         <Spot href="#community" label="커뮤니티" x={699} y={14} w={63} h={32} />
         <Spot href="#top" label="로그인" x={775} y={14} w={48} h={32} />
         <Spot href="#top" label="회원가입" x={831} y={8} w={78} h={45} round="23px" />
 
-        {/* Hero buttons */}
         <Spot href="#top" label="지금 가입하기" x={72} y={282} w={148} h={49} round="25px" />
         <Spot href="#network" label="더 알아보기" x={228} y={282} w={140} h={49} round="25px" />
-
-        {/* Chairman video */}
         <Spot href="#network" label="의장 인사 영상" x={58} y={377} w={474} h={257} round="16px" />
 
-        {/* Featured 10 */}
         {featured.map(([id, x, y]) => (
-          <Spot
-            key={id}
-            href={`/members/${id}`}
-            label={`${id}번 Featured 멤버 상세보기`}
-            x={x}
-            y={y}
-            w={134}
-            h={133}
-            round="14px"
-          />
+          <Spot key={id} href={`/members/${id}`} label={`${id}번 Featured 멤버 상세보기`} x={x} y={y} w={134} h={133} round="14px" />
         ))}
 
-        {/* News */}
-        <Spot href="#news" label="공지와 뉴스 전체보기" x={803} y={1014} w={88} h={30} />
-        <Spot href="#news" label="5월 정기 네트워킹 행사 안내" x={58} y={1049} w={264} h={151} round="16px" />
-        <Spot href="#news" label="2025 화성 어워즈 후보 공모" x={333} y={1049} w={264} h={151} round="16px" />
-        <Spot href="#news" label="신규 그룹장 모집 안내" x={609} y={1049} w={264} h={151} round="16px" />
-        <Spot href="#news" label="뉴스 오른쪽 넘기기" x={856} y={1086} w={31} h={40} round="20px" />
+        <Spot href="/notice-news" label="공지와 뉴스 전체보기" x={803} y={1014} w={88} h={30} />
+        <Spot href="/notice-news/1" label="5월 정기 네트워킹 행사 안내" x={58} y={1049} w={264} h={151} round="16px" />
+        <Spot href="/notice-news/2" label="2025 화성 어워즈 후보 공모" x={333} y={1049} w={264} h={151} round="16px" />
+        <Spot href="/notice-news/3" label="신규 그룹장 모집 안내" x={609} y={1049} w={264} h={151} round="16px" />
+        <Spot href="/notice-news" label="뉴스 오른쪽 넘기기" x={856} y={1086} w={31} h={40} round="20px" />
 
-        {/* 40 members */}
         <Spot href="/members" label="전체 멤버 보기" x={786} y={1214} w={96} h={31} round="16px" />
         {regular.map(([id, x, y]) => (
-          <Spot
-            key={id}
-            href={`/members/${id}`}
-            label={`${id}번 멤버 상세보기`}
-            x={x}
-            y={y}
-            w={69}
-            h={78}
-            round="12px"
-          />
+          <Spot key={id} href={`/members/${id}`} label={`${id}번 멤버 상세보기`} x={x} y={y} w={69} h={78} round="12px" />
         ))}
         <Spot href="/members" label="멤버 더보기" x={407} y={1448} w={119} h={37} round="19px" />
 
-        {/* Footer */}
         <Spot href="#top" label="푸터 로고 홈" x={53} y={1504} w={190} h={116} round="20px" />
         <Spot href="#about" label="링크 모음" x={319} y={1507} w={150} h={126} />
         <Spot href="#about" label="이용 안내" x={520} y={1507} w={142} h={116} />

@@ -53,9 +53,9 @@ export default async function Profile({ params }) {
         <Spot href="/" label="화성인사이드 홈" x={39} y={12} w={135} h={43} round="22px" />
         <Spot href="/#about" label="소개" x={495} y={14} w={38} h={30} />
         <Spot href="/#network" label="네트워크" x={548} y={14} w={55} h={30} />
-        <Spot href="/#news" label="클래스와 뉴스" x={615} y={14} w={79} h={30} />
+        <Spot href="/notice-news" label="클래스와 뉴스" x={615} y={14} w={79} h={30} />
         <Spot href="/#community" label="커뮤니티" x={710} y={14} w={59} h={30} />
-        <Spot href="/#news" label="공지사항" x={777} y={14} w={58} h={30} />
+        <Spot href="/notice-news" label="공지사항" x={777} y={14} w={58} h={30} />
         <Spot href="/#top" label="회원가입" x={837} y={10} w={68} h={39} round="22px" />
 
         {/* Breadcrumb */}

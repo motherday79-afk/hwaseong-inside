@@ -1,22 +1,21 @@
-# Hwaseong Inside - Detail Master Web v1
+# Hwaseong Inside - News master web v1
 
-메인페이지는 승인된 master-web v1.1을 그대로 유지하고,
-상세페이지 `/members/[id]`에 승인된 상세 웹마스터 이미지를 적용한 버전입니다.
+이번 버전은 기존 메인/상세 마스터 방식 그대로,
+공지 & 뉴스 섹션을 **웹마스터 이미지 + 완전 투명 클릭맵** 구조로 추가한 풀파일입니다.
 
-## 상세페이지 적용 방식
-- 이미지: `/public/assets/master/detail-master-v1.png`
-- 기준 해상도: 941 x 1672
-- 클릭맵: 이미지와 동일 좌표계의 퍼센트 배치
-- 클릭영역은 완전 투명하며 hover/focus 박스가 표시되지 않음
+## 추가된 화면
+- `/notice-news` : 공지 & 뉴스 포털/목록 페이지
+- `/notice-news/[id]` : 공지 & 뉴스 상세 페이지
 
-## 클릭 적용 영역
-- 상단 로고 및 메뉴
-- breadcrumb
-- 경력 주요 성과 3개
-- 추천 멤버 5명 + 다음 보기
-- 네트워크 요청하기 / 메시지 보내기
-- 푸터 링크
-- 맨 위로
+## 반영 사항
+- 메인페이지 공지 카드 3개 → 각각 공지 상세로 이동
+- 메인페이지 `전체보기` → `/notice-news`
+- 멤버 상세 상단 `클래스 & 뉴스`, `공지사항` → `/notice-news`
+- 공지 목록/상세는 모두 승인용 마스터 이미지 기반
+- 클릭영역은 모두 투명 (hover 박스 없음)
 
-## 적용
-압축 해제 후 GitHub `hwaseong-inside` 저장소 루트에 전체 덮어쓰기 후 Commit changes.
+## 적용 방법
+1. 압축 해제
+2. GitHub `hwaseong-inside` 저장소 루트에 전체 덮어쓰기
+3. Commit changes
+4. Vercel 자동 배포 확인
