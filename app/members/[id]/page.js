@@ -38,7 +38,7 @@ export default async function Profile({ params }) {
       <div className="masterBoard detailMasterBoard">
         <img
           src="/assets/master/detail-master-v1.png"
-          alt="화성인사이드 박서윤 프로필 상세페이지"
+          alt="화성인사이드 김광선 프로필 상세페이지"
           className="masterImage"
         />
 
