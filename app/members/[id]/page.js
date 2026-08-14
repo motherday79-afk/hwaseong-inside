@@ -30,17 +30,51 @@ function Anchor({ id, y }) {
   );
 }
 
+const profileConfigs = {
+  '1': {
+    image: '/assets/master/detail-master-park-v1.png',
+    alt: '화성인사이드 박인식 프로필 상세페이지',
+    careerLinks: [
+      '서울구로국제어린이영화제 주요 성과 보기',
+      '청소년 뮤지컬영화 빵셔틀 주요 성과 보기',
+      '디지털단편영화 및 한국AI콘텐츠학회 주요 성과 보기',
+    ],
+    recommended: [
+      ['2', '추천 멤버 김광선'],
+      ['3', '추천 멤버 홍서연'],
+      ['4', '추천 멤버 박지은'],
+      ['5', '추천 멤버 최우진'],
+      ['6', '추천 멤버 서하윤'],
+    ],
+  },
+  '2': {
+    image: '/assets/master/detail-master-kim-v1.png',
+    alt: '화성인사이드 김광선 프로필 상세페이지',
+    careerLinks: [
+      '인사이트랩 주요 성과 보기',
+      '커넥트미디어 주요 성과 보기',
+      '스테이지웍스 주요 성과 보기',
+    ],
+    recommended: [
+      ['3', '추천 멤버 이준혁'],
+      ['4', '추천 멤버 박소연'],
+      ['5', '추천 멤버 정민수'],
+      ['6', '추천 멤버 최유진'],
+      ['1', '추천 멤버 박인식'],
+    ],
+  },
+};
+
+const fallback = profileConfigs['2'];
+
 export default async function Profile({ params }) {
-  await params;
+  const resolvedParams = await params;
+  const config = profileConfigs[resolvedParams?.id] || fallback;
 
   return (
     <main className="masterMain detailMasterMain">
       <div className="masterBoard detailMasterBoard">
-        <img
-          src="/assets/master/detail-master-v1.png"
-          alt="화성인사이드 김광선 프로필 상세페이지"
-          className="masterImage"
-        />
+        <img src={config.image} alt={config.alt} className="masterImage" />
 
         <Anchor id="detail-top" y={0} />
         <Anchor id="profile" y={100} />
@@ -64,16 +98,16 @@ export default async function Profile({ params }) {
         <Spot href="#profile" label="프로필" x={146} y={67} w={58} h={24} />
 
         {/* Career performance links */}
-        <Spot href="#career" label="브랜드 웨이브 주요 성과 보기" x={792} y={758} w={82} h={28} />
-        <Spot href="#career" label="그로스하이 주요 성과 보기" x={792} y={819} w={82} h={28} />
-        <Spot href="#career" label="디어미디어 주요 성과 보기" x={792} y={879} w={82} h={28} />
+        <Spot href="#career" label={config.careerLinks[0]} x={792} y={758} w={82} h={28} />
+        <Spot href="#career" label={config.careerLinks[1]} x={792} y={819} w={82} h={28} />
+        <Spot href="#career" label={config.careerLinks[2]} x={792} y={879} w={82} h={28} />
 
         {/* Recommended members */}
-        <Spot href="/members/1" label="추천 멤버 이준혁" x={50} y={981} w={144} h={153} round="14px" />
-        <Spot href="/members/2" label="추천 멤버 최민수" x={219} y={981} w={144} h={153} round="14px" />
-        <Spot href="/members/3" label="추천 멤버 오예림" x={389} y={981} w={144} h={153} round="14px" />
-        <Spot href="/members/4" label="추천 멤버 강재우" x={558} y={981} w={144} h={153} round="14px" />
-        <Spot href="/members/5" label="추천 멤버 정유진" x={728} y={981} w={144} h={153} round="14px" />
+        <Spot href={`/members/${config.recommended[0][0]}`} label={config.recommended[0][1]} x={50} y={981} w={144} h={153} round="14px" />
+        <Spot href={`/members/${config.recommended[1][0]}`} label={config.recommended[1][1]} x={219} y={981} w={144} h={153} round="14px" />
+        <Spot href={`/members/${config.recommended[2][0]}`} label={config.recommended[2][1]} x={389} y={981} w={144} h={153} round="14px" />
+        <Spot href={`/members/${config.recommended[3][0]}`} label={config.recommended[3][1]} x={558} y={981} w={144} h={153} round="14px" />
+        <Spot href={`/members/${config.recommended[4][0]}`} label={config.recommended[4][1]} x={728} y={981} w={144} h={153} round="14px" />
         <Spot href="/members" label="추천 멤버 더 보기" x={883} y={1016} w={36} h={42} round="20px" />
 
         {/* CTA */}

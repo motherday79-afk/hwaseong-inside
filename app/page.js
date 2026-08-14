@@ -3,8 +3,16 @@ const H = 1672;
 const px = (v, total) => `${(v / total) * 100}%`;
 
 const featured = [
-  ['1', 80, 728], ['2', 237, 728], ['3', 394, 728], ['4', 551, 728], ['5', 708, 728],
-  ['6', 80, 868], ['7', 237, 868], ['8', 394, 868], ['9', 551, 868], ['10', 708, 868],
+  ['1', '박인식 Featured 멤버 상세보기', 80, 728],
+  ['2', '김광선 Featured 멤버 상세보기', 237, 728],
+  ['3', '김도현 Featured 멤버 상세보기', 394, 728],
+  ['4', '박지은 Featured 멤버 상세보기', 551, 728],
+  ['5', '최우진 Featured 멤버 상세보기', 708, 728],
+  ['6', '오지훈 Featured 멤버 상세보기', 80, 868],
+  ['7', '손예린 Featured 멤버 상세보기', 237, 868],
+  ['8', '정지호 Featured 멤버 상세보기', 394, 868],
+  ['9', '서영영 Featured 멤버 상세보기', 551, 868],
+  ['10', '송시우 Featured 멤버 상세보기', 708, 868],
 ];
 
 const regular = [
@@ -71,8 +79,8 @@ export default function Home() {
         <Spot href="#network" label="더 알아보기" x={228} y={282} w={140} h={49} round="25px" />
         <Spot href="#network" label="의장 인사 영상" x={58} y={377} w={474} h={257} round="16px" />
 
-        {featured.map(([id, x, y]) => (
-          <Spot key={id} href={`/members/${id}`} label={`${id}번 Featured 멤버 상세보기`} x={x} y={y} w={134} h={133} round="14px" />
+        {featured.map(([id, label, x, y]) => (
+          <Spot key={id} href={`/members/${id}`} label={label} x={x} y={y} w={134} h={133} round="14px" />
         ))}
 
         <Spot href="/notice-news" label="공지와 뉴스 전체보기" x={803} y={1014} w={88} h={30} />
