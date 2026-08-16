@@ -1,5 +1,6 @@
 import './globals.css';
 import './clean-v7.css';
+import './design-v7-2.css';
 
 export const metadata = {
   title: '화성인사이드',
