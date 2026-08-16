@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Jua&family=Manrope:wght@500;600;700;800&display=swap');
+
+/* =========================================================
+   HWASEONG INSIDE DESIGN REFINEMENT v7.3
+   Layout order/grid stay intact. Visual framing + portrait ID cards.
+   ========================================================= */
+:root{
+  --hi-font-round:"Jua","Noto Sans KR","Pretendard",sans-serif;
+  --hi-font-script:"Great Vibes","Segoe Script","Snell Roundhand",cursive;
+  --hi-frame-line:rgba(104,78,153,.12);
+  --hi-frame-fill:rgba(255,255,255,.72);
+  --hi-frame-shadow:0 26px 70px rgba(74,51,113,.075),inset 0 1px 0 rgba(255,255,255,.95);
+}
+
+/* softer, rounder brand identity */
+.v7Brand,.v7FooterBrand{font-family:var(--hi-font-round);font-weight:400;letter-spacing:-.35px}
+.v7Brand{font-size:21px;color:#28234a}
+.v7Brand>span{color:#fff;border:1px solid rgba(255,255,255,.68);box-shadow:0 9px 23px rgba(120,84,206,.20),inset 0 0 0 1px rgba(255,255,255,.20)}
+.v7Brand>span svg{stroke-width:1.45}
+.v7FooterBrand{letter-spacing:-.2px}
+
+/* hero: title and visual now read as one framed composition without moving the grid */
+.v7HeroGrid{position:relative;isolation:isolate}
+.v7HeroGrid::before{content:"";position:absolute;inset:-27px -32px;z-index:-1;border:1px solid var(--hi-frame-line);border-radius:38px;background:linear-gradient(135deg,rgba(255,255,255,.88),rgba(253,248,255,.72));box-shadow:var(--hi-frame-shadow);backdrop-filter:blur(20px) saturate(1.05)}
+.v7HeroGrid::after{content:"";position:absolute;inset:-26px -31px;z-index:-1;border-radius:37px;pointer-events:none;background:radial-gradient(circle at 79% 18%,rgba(220,204,255,.20),transparent 26%),radial-gradient(circle at 13% 82%,rgba(255,216,232,.15),transparent 28%)}
+.v7HeroCopy h1{font-family:var(--hi-font-round);font-weight:400;letter-spacing:-2.5px;line-height:1.17;color:#231f3d}
+.v7HeroCopy h1 span{background:linear-gradient(112deg,#5a59e4 4%,#785fdc 52%,#c477b4 100%);background-clip:text;-webkit-background-clip:text}
+.v7HeroCopy p{font-weight:500;color:#5f596d}
+.v7HeroVisual{position:relative;border-radius:28px;background:linear-gradient(145deg,rgba(245,239,255,.48),rgba(255,237,245,.36));box-shadow:inset 0 0 0 1px rgba(111,86,162,.07)}
+.v7HeroVisual.isCustom img{border-radius:28px;filter:saturate(.99) contrast(1.02)}
+
+/* framed content language: creates the polished 'picture frame' feel without changing flow */
+.v7Featured>.v7Wrap,.v7News>.v7Wrap,.v7Members>.v7Wrap{position:relative;isolation:isolate}
+.v7Featured>.v7Wrap::before,.v7News>.v7Wrap::before,.v7Members>.v7Wrap::before{content:"";position:absolute;inset:-18px -22px;z-index:-1;border:1px solid rgba(101,77,149,.10);border-radius:30px;background:linear-gradient(145deg,rgba(255,255,255,.76),rgba(252,249,255,.62));box-shadow:0 18px 50px rgba(66,46,102,.055),inset 0 1px 0 rgba(255,255,255,.92);backdrop-filter:blur(14px)}
+
+/* Platinum Circle */
+.v73PlatinumHeading{margin-bottom:27px}
+.v73PlatinumLine{display:flex;align-items:center;justify-content:center;gap:10px;color:#7560d8}
+.v73PlatinumLine>span{font-family:var(--hi-font-script);font-size:35px;line-height:1;letter-spacing:.01em;color:transparent;background:linear-gradient(110deg,#6259dc,#9c6ed5 58%,#d98ca5);background-clip:text;-webkit-background-clip:text;text-shadow:0 7px 20px rgba(107,80,186,.10)}
+.v73Laurel{color:#b48955;filter:drop-shadow(0 4px 8px rgba(149,102,48,.10))}
+.v73LaurelLeft{transform:scaleX(-1)}
+.v73PlatinumHeading h2{margin-top:7px;font-family:var(--hi-font-latin);font-size:25px;letter-spacing:.015em}
+.v73PlatinumHeading p{margin-top:3px}
+
+/* Top 10: portrait employee-ID cards */
+.v7Leader{overflow:hidden;border-radius:19px;border-color:rgba(90,67,131,.13);background:linear-gradient(165deg,#fff 0%,#fdfaff 76%,#faf6ff 100%);box-shadow:0 11px 28px rgba(69,48,107,.055),inset 0 1px 0 #fff}
+.v7Leader::after{content:"";position:absolute;left:12px;right:12px;top:0;height:3px;border-radius:0 0 6px 6px;background:linear-gradient(90deg,#665de0,#ac75d1,#e394ac);opacity:.72}
+.v7LeaderPhoto{height:auto;aspect-ratio:4/5;border-radius:13px;background:linear-gradient(145deg,#f0eaff,#fff0f4);box-shadow:inset 0 0 0 1px rgba(96,72,140,.07),0 5px 16px rgba(65,46,97,.035)}
+.v7LeaderPhoto img{object-fit:cover;object-position:center 18%}
+.v7Leader>strong{font-family:var(--hi-font-round);font-weight:400;font-size:15px;letter-spacing:-.25px}
+.v7Leader>small{font-size:10px;color:#817a89}
+.v7Leader>b{border:1px solid rgba(255,255,255,.82);box-shadow:0 5px 14px rgba(82,62,163,.18)}
+
+/* 40 members: same portrait ID-card language, compact enough to retain the 10-column layout */
+.v7Member{position:relative;overflow:hidden;border-radius:15px;background:linear-gradient(165deg,#fff,#fdfaff);box-shadow:0 7px 21px rgba(62,44,96,.045),inset 0 1px 0 #fff}
+.v7Member::before{content:"";position:absolute;left:10px;right:10px;top:0;height:2px;border-radius:0 0 4px 4px;background:linear-gradient(90deg,#7666df,#d788ae);opacity:.46}
+.v7MemberPhoto{height:auto;aspect-ratio:4/5;border-radius:10px;background:linear-gradient(145deg,#f0ebff,#fff0f5)}
+.v7MemberPhoto img{object-fit:cover;object-position:center 18%}
+.v7Member strong{font-family:var(--hi-font-round);font-weight:400;font-size:12px;letter-spacing:-.2px}
+.v7Member small{font-size:9px;color:#88818e}
+.v7TitleIcon{width:34px;height:34px;border-radius:11px;align-items:center;justify-content:center;background:linear-gradient(145deg,#f0ebff,#fff0f5);border:1px solid rgba(106,81,159,.10);box-shadow:0 6px 15px rgba(73,52,111,.05)}
+
+/* icon finish */
+.v7TitleIcon svg,.v7NewsGlyph,.v7ConnectRound svg{stroke-width:1.5}
+.v7NewsGlyph{filter:drop-shadow(0 7px 12px rgba(49,35,81,.16))}
+.v7Social span{border:1px solid rgba(255,255,255,.25);box-shadow:inset 0 1px 0 rgba(255,255,255,.12)}
+
+@media(max-width:960px){
+  .v7HeroGrid::before,.v7HeroGrid::after{inset:-20px -18px}
+  .v7Featured>.v7Wrap::before,.v7News>.v7Wrap::before,.v7Members>.v7Wrap::before{inset:-14px -12px}
+}
+@media(max-width:720px){
+  .v7HeroGrid::before,.v7HeroGrid::after{inset:-15px -12px;border-radius:27px}
+  .v7HeroVisual{border-radius:22px}.v7HeroVisual.isCustom img{border-radius:22px}
+  .v73PlatinumLine>span{font-size:31px}
+  .v7LeaderPhoto{aspect-ratio:4/5}
+  .v7MemberPhoto{aspect-ratio:4/5}
+}
