@@ -475,3 +475,42 @@ a{text-decoration:none;color:inherit;}
  .chairCardV64{grid-template-columns:34% 66%!important;aspect-ratio:auto!important;min-height:265px!important;padding:13px!important}.chairCardV64 .webChairIdentity{padding-top:7px}.chairCardV64 .webChairIdentity span{font-size:9px}.chairCardV64 .webChairIdentity strong{font-size:13px}.chairCardV64 .webChairCopy{padding-left:12px!important}.chairCardV64 .webChairCopy h2{font-size:15px!important;margin-bottom:8px!important}.chairCardV64 .webGreetingText p{font-size:9.5px!important;line-height:1.4!important;margin-bottom:5px!important}.chairCardV64 .webSignature{max-width:105px!important;max-height:30px!important;margin-top:4px!important}
  .memberDetailDom.v64{padding:10px 12px 50px}.memberHeroV64>article{padding:19px}.memberHeroV64 h1{font-size:30px}.memberHeroV64 dl{grid-template-columns:1fr}.memberStoryGrid{gap:12px;margin-top:12px}.memberVideoCard,.memberPhilosophy{min-height:230px}.memberPhilosophy{padding:20px}.memberDetailColsV64{gap:12px;margin-top:12px}.memberStrengthCards{grid-template-columns:1fr}.memberStrengthSection{gap:12px;margin-top:12px}.memberConnectActions{width:100%;flex-direction:column}.memberConnectActions a{text-align:center}.accountStrengths>div,.adminStrengthEdit>div{grid-template-columns:1fr}
 }
+
+
+/* v6.5 exact chair greeting + common member-detail visuals */
+@media(min-width:721px){
+ .webChairGrid{align-items:stretch!important}
+ .webChairGrid>.webVideo,.webChairGrid>.chairCardV65{height:clamp(330px,31.7vw,374px)!important;min-height:0!important;max-height:374px!important}
+}
+.chairCardV65{display:grid!important;grid-template-columns:38% 62%!important;gap:18px!important;padding:20px!important;align-items:stretch!important;overflow:hidden!important}
+.chairV65Left{display:flex;flex-direction:column;min-width:0;min-height:0}
+.chairV65Left h2{margin:0 0 10px!important;color:#4747a8;font-size:17px;line-height:1.2;flex:0 0 auto}
+.chairV65Left .webChairPhoto{flex:1 1 auto;min-height:0!important;height:auto!important;border-radius:14px;background:linear-gradient(145deg,#f4eaff,#fff0f6);overflow:hidden}
+.chairV65Left .webChairPhoto img{width:100%;height:100%;object-fit:cover;object-position:center 18%}
+.chairV65Left .webChairIdentity{flex:0 0 auto;padding:8px 2px 0;line-height:1.2}
+.chairV65Left .webChairIdentity span{display:block;color:#74717c;font-size:10px;margin-bottom:3px}
+.chairV65Left .webChairIdentity strong{display:block;color:#1f1d25;font-size:15px}
+.chairV65Right{display:flex;flex-direction:column;min-width:0;min-height:0;padding:4px 2px 0 0}
+.chairV65Right .webGreetingText{flex:1 1 auto;min-height:0;overflow:hidden;padding:0}
+.chairV65Right .webGreetingText p{font-size:11.2px!important;line-height:1.52!important;margin:0 0 7px!important;color:#55515d!important;word-break:keep-all}
+.chairV65Right .chairGreetingGap{height:5px}
+.chairV65Right .webSignature{display:block;flex:0 0 auto;width:min(72%,230px)!important;max-width:230px!important;max-height:64px!important;height:auto!important;object-fit:contain;object-position:right center;margin:8px 0 0 auto!important}
+.memberCommonVisual{padding:0!important;overflow:hidden!important;display:block!important;min-height:0!important}
+.memberCommonVisual>img{display:block;width:100%;height:100%;object-fit:cover;border-radius:inherit}
+.memberCommonFallback{height:100%;padding:24px;display:flex;flex-direction:column;justify-content:center}
+.memberStrengthCommon{display:block!important;padding:0!important;background:#fff;border:1px solid #ede8f4;border-radius:18px;overflow:hidden}
+.memberStrengthCommon:has(.memberRadarCard){display:grid!important;grid-template-columns:38% 62%!important;background:transparent;border:0;overflow:visible}
+.memberStrengthCommonImg{display:block;width:100%;height:auto;max-height:440px;object-fit:cover;object-position:center;border-radius:18px}
+@media(max-width:720px){
+ .chairCardV65{grid-template-columns:36% 64%!important;gap:12px!important;padding:14px!important;min-height:275px!important}
+ .chairV65Left h2{font-size:15px;margin-bottom:7px!important}
+ .chairV65Left .webChairIdentity span{font-size:9px}.chairV65Left .webChairIdentity strong{font-size:13px}
+ .chairV65Right .webGreetingText p{font-size:9.6px!important;line-height:1.4!important;margin-bottom:5px!important}
+ .chairV65Right .webSignature{max-width:135px!important;max-height:38px!important}
+ .memberStrengthCommon:has(.memberRadarCard){grid-template-columns:1fr!important}
+}
+@media(max-width:430px){
+ .chairCardV65{grid-template-columns:40% 60%!important;gap:10px!important;min-height:255px!important}
+ .chairV65Left h2{font-size:14px}.chairV65Right .webGreetingText p{font-size:9px!important;line-height:1.34!important}
+ .chairV65Right .webSignature{max-width:110px!important;max-height:32px!important}
+}

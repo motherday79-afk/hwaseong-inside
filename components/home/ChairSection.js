@@ -12,13 +12,13 @@ export default function ChairSection(){
       <div className="webVideoText"><small>의장 인사 영상</small></div>
     </div>
 
-    <article className="webChairCard chairCardV64">
-      <div className="webChairMedia">
+    <article className="webChairCard chairCardV65">
+      <div className="chairV65Left">
+        <h2>의장 인사말</h2>
         <div className="webChairPhoto"><img src={c.portraitUrl||'/assets/real/park-insik.jpg'} alt={`${c.name} ${c.title}`}/></div>
         <div className="webChairIdentity"><span>{c.title}</span><strong>{c.name}</strong></div>
       </div>
-      <div className="webChairCopy">
-        <h2>의장 인사말</h2>
+      <div className="chairV65Right">
         <div className="webGreetingText">{lines.map((line,i)=>line.trim()?<p key={i}>{line}</p>:<div className="chairGreetingGap" key={i}/>)}</div>
         {c.signatureUrl&&<img className="webSignature" src={c.signatureUrl} alt={`${c.name} 서명`}/>}      
       </div>

@@ -5,6 +5,8 @@ export const IMAGE_SPECS = {
   newsCover: { label: '공지 & 뉴스 대표 이미지', width: 1200, height: 675, minWidth: 720, minHeight: 405, ratio: '16:9', format: 'JPG / WEBP', note: '권장 1200×675px. 목록/메인 카드에서 자동 크롭됩니다.' },
   heroVisual: { label: '메인 히어로 비주얼', width: 1600, height: 1200, minWidth: 800, minHeight: 600, ratio: '4:3', format: 'PNG / WEBP / SVG', note: '장식 그래픽은 투명 PNG 또는 SVG 권장.' },
   signature: { label: '의장 서명', width: 1200, height: 400, minWidth: 600, minHeight: 180, ratio: '3:1', ratioTolerance: .25, format: '투명 PNG', note: '권장 1200×400px. 배경 투명, 검정 또는 짙은 남색 잉크 권장.' },
+  philosophyImage: { label: '화성인사이드 철학 공통 이미지', width: 1200, height: 720, minWidth: 720, minHeight: 432, ratio: '5:3', ratioTolerance: .22, format: 'JPG / PNG / WEBP', note: '회원 상세 영상 오른쪽에 전회원 공통으로 노출됩니다. 권장 1200×720px.' },
+  strengthImage: { label: '강점 레이더 공통 이미지', width: 1600, height: 650, minWidth: 900, minHeight: 360, ratio: '약 2.46:1', ratioTolerance: .28, format: 'JPG / PNG / WEBP', note: '회원 상세 하단 강점 영역에 전회원 공통으로 노출됩니다. 권장 1600×650px.' },
   logo: { label: '사이트 로고', width: 1200, height: 300, minWidth: 600, minHeight: 150, ratio: '4:1', format: 'SVG 우선 / PNG', note: '가능하면 SVG 사용.' },
 };
 
@@ -23,6 +25,7 @@ export const DEFAULT_ADMIN_DATA = {
     greeting: '안녕하세요.\n화성인사이드의 의장/영화감독 박인식 입니다.\n한사람, 한사람을 깊이보고 공감하며 전문성 있는 네트워크의 연결을 구현하고 싶었습니다.\n\n결국 어떠한 일의 성공은 누가 하느냐, 누구와 하느냐에 달려있는 문제로 귀결된다고 확언해도 좋을만큼 연결은 중요합니다.\n\n화성인사이드를 통해 더넓은 세상으로의 도약을 응원합니다.',
     portraitUrl: '/assets/real/park-insik.jpg', videoThumbnailUrl: '', videoUrl: '', signatureUrl: '',
   },
+  detailAssets: { philosophyImageUrl: '', strengthImageUrl: '' },
   featuredIds: ['1','2','3','4','5','6','7','8','9','10'],
   news: [
     { id: '1', category: '공지', title: '5월 정기 네트워킹 행사 안내', excerpt: '정기 네트워킹 행사에 여러분을 초대합니다.', date: '2025.05.23', coverUrl: '', published: true },
