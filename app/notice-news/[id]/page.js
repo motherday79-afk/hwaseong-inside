@@ -1,4 +1,6 @@
 import { notFound } from 'next/navigation';
 import { createAdminClient } from '../../../lib/supabase/admin';
+import { getCurrentUser } from '../../../lib/auth';
+import { BoardDetailClient } from '../../../components/BoardClient';
 export const dynamic='force-dynamic';
-export default async function NewsDetail({params}){const {id}=await params;const admin=createAdminClient();const {data:p}=await admin.from('news_posts').select('*').eq('id',Number(id)).eq('is_published',true).maybeSingle();if(!p)notFound();return <main className="newsDetailDom"><a href="/notice-news">← 공지 & 뉴스 목록</a><header><span>{p.category}</span><h1>{p.title}</h1><p>{p.excerpt}</p><time>{(p.published_at||p.created_at||'').slice(0,10)}</time></header>{p.cover_url&&<img className="newsDetailCover" src={p.cover_url} alt=""/>}<article>{(p.body||p.excerpt||'').split('\n').map((line,i)=>line?<p key={i}>{line}</p>:<br key={i}/>)}</article><footer><a href="/notice-news">목록으로 돌아가기</a></footer></main>}
+export default async function NoticeDetail({params}){const {id}=await params;const admin=createAdminClient();const [{data:post},user]=await Promise.all([admin.from('board_posts').select('*').eq('id',Number(id)).eq('board_type','notice').maybeSingle(),getCurrentUser()]);if(!post||(!post.is_published&&!['admin','editor'].includes(user?.role||'')))notFound();return <BoardDetailClient post={post} currentUser={user?{id:user.id,role:user.role}:null} type="notice"/>}

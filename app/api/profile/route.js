@@ -13,7 +13,7 @@ export async function GET(){
 export async function PUT(request){
   const user=await getCurrentUser(); if(!user)return NextResponse.json({error:'unauthorized'},{status:401});
   const body=await request.json(); const admin=createAdminClient();
-  const allowed=['name','job','age','gender','public_email','school','area','tags','intro','profile_image_url'];
+  const allowed=['name','job','age','gender','public_email','school','area','tags','intro','profile_image_url','youtube_url','youtube_thumbnail_url'];
   const patch={updated_at:new Date().toISOString()}; allowed.forEach(k=>{if(k in body)patch[k]=body[k]});
   const {data,error}=await admin.from('members').update(patch).eq('user_id',user.id).select().maybeSingle();
   if(error)return NextResponse.json({error:error.message},{status:500});

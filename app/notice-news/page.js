@@ -1,3 +1,5 @@
 import { createAdminClient } from '../../lib/supabase/admin';
+import { getCurrentUser } from '../../lib/auth';
+import { BoardListClient } from '../../components/BoardClient';
 export const dynamic='force-dynamic';
-export default async function NewsPage(){const admin=createAdminClient();const {data:posts}=await admin.from('news_posts').select('*').eq('is_published',true).order('published_at',{ascending:false});return <main className="publicListPage"><div className="publicPageHead"><a href="/">← 화성인사이드</a><h1>공지 & 뉴스</h1><p>화성인사이드의 새로운 소식과 운영 안내를 전합니다.</p></div><div className="publicNewsGrid">{(posts||[]).map(p=><a href={`/notice-news/${p.id}`} key={p.id}><div>{p.cover_url?<img src={p.cover_url} alt=""/>:<span>NEWS</span>}</div><em>{p.category}</em><h2>{p.title}</h2><p>{p.excerpt}</p><time>{(p.published_at||p.created_at||'').slice(0,10)}</time></a>)}</div></main>}
+export default async function NoticeBoard(){const admin=createAdminClient();const [{data:posts},user]=await Promise.all([admin.from('board_posts').select('*').eq('board_type','notice').eq('is_published',true).order('created_at',{ascending:false}),getCurrentUser()]);return <BoardListClient type="notice" title="공지게시판" description="화성인사이드의 공지와 회원 소식을 공유합니다." initialPosts={posts||[]} canWrite={!!user}/>}
