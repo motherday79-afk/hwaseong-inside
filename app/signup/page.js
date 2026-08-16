@@ -1,8 +1,8 @@
 'use client';
 import { useState } from 'react';
-import { createClient } from '../../lib/supabase/client';
-
+import { useRouter } from 'next/navigation';
 export default function SignupPage(){
+ const router=useRouter();
  const [form,setForm]=useState({username:'',email:'',password:'',name:'',job:''});
  const [msg,setMsg]=useState('');const [loading,setLoading]=useState(false);
  const set=(k,v)=>setForm(p=>({...p,[k]:v}));
@@ -10,15 +10,10 @@ export default function SignupPage(){
    e.preventDefault();setLoading(true);setMsg('');
    try{
      const username=form.username.trim().toLowerCase();
-     if(!/^[a-z0-9_]{4,20}$/.test(username)) throw new Error('아이디는 영문 소문자, 숫자, 밑줄(_) 4~20자로 입력해주세요.');
-     const check=await fetch(`/api/auth/username?username=${encodeURIComponent(username)}`,{cache:'no-store'});
-     const checked=await check.json();
-     if(!check.ok) throw new Error(checked.error||'아이디 중복 확인에 실패했습니다.');
-     if(!checked.available) throw new Error('이미 사용 중인 아이디입니다.');
-     const supabase=createClient();const site=window.location.origin;
-     const {error}=await supabase.auth.signUp({email:form.email,password:form.password,options:{emailRedirectTo:`${site}/auth/callback`,data:{username,name:form.name,job:form.job}}});
-     if(error)throw error;
-     setMsg('가입이 완료되었습니다. 이제 아이디로 로그인할 수 있습니다. 이메일 인증이 켜져 있다면 메일의 인증 링크를 눌러주세요.');
+     const r=await fetch('/api/auth/signup',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({...form,username})});
+     const d=await r.json(); if(!r.ok)throw new Error(d.error||'회원가입에 실패했습니다.');
+     setMsg('가입이 완료되었습니다. 아이디로 바로 로그인할 수 있습니다.');
+     setTimeout(()=>router.push('/login'),700);
    }catch(e){setMsg(e.message||'회원가입에 실패했습니다.');}
    finally{setLoading(false)}
  }

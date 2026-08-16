@@ -27,7 +27,7 @@ export async function PUT(request){
   if(['active','suspended'].includes(b.status))accountPatch.status=b.status;
   const {error:accountError}=await admin.from('app_users').update(accountPatch).eq('user_id',b.user_id); if(accountError)return NextResponse.json({error:accountError.message},{status:500});
 
-  const authPatch={}; if(b.email!==undefined)authPatch.email=String(b.email).trim(); if(b.password)authPatch.password=String(b.password); if(b.name!==undefined||b.job!==undefined)authPatch.user_metadata={name:b.name||'',job:b.job||''};
+  const authPatch={}; if(b.email!==undefined)authPatch.email=String(b.email).trim(); if(b.password){authPatch.password=String(b.password);authPatch.email_confirm=true;} if(b.name!==undefined||b.job!==undefined)authPatch.user_metadata={name:b.name||'',job:b.job||''};
   if(Object.keys(authPatch).length){const {error:e}=await admin.auth.admin.updateUserById(b.user_id,authPatch);if(e)return NextResponse.json({error:e.message},{status:500});}
 
   const memberPatch={updated_at:new Date().toISOString()};

@@ -23,7 +23,7 @@ export default function LoginPage(){
       if(!r.ok) throw new Error(d.error||'로그인에 실패했습니다.');
       const params=new URLSearchParams(window.location.search);
       const next=params.get('next');
-      router.replace(next || (['admin','editor'].includes(d.role)?'/admin':'/account'));
+      router.replace(next || '/');
       router.refresh();
     }catch(e){setMsg(e?.message||'로그인에 실패했습니다.');}
     finally{setLoading(false);}
