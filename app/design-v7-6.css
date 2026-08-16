@@ -1,0 +1,57 @@
+/* =========================================================
+   HWASEONG INSIDE FINAL DESIGN v7.6
+   One grand frame + nested subframes + full-page brand gradient.
+   Layout order stays unchanged.
+   ========================================================= */
+:root{
+ --v76-frame:rgba(103,79,153,.11);
+ --v76-inner:rgba(255,255,255,.73);
+ --v76-shadow:0 34px 90px rgba(78,52,119,.085),inset 0 1px 0 rgba(255,255,255,.98);
+}
+html{background:#fbf8ff}
+body{background:transparent}
+.v7Home{position:relative;background:
+ radial-gradient(circle at 8% 7%,rgba(255,196,219,.36),transparent 22%),
+ radial-gradient(circle at 88% 10%,rgba(195,178,255,.40),transparent 27%),
+ radial-gradient(circle at 16% 50%,rgba(207,218,255,.25),transparent 29%),
+ radial-gradient(circle at 88% 67%,rgba(255,199,220,.24),transparent 27%),
+ linear-gradient(180deg,#fff9fc 0%,#fbf8ff 22%,#f8f6ff 48%,#fbf8ff 72%,#fff8fa 100%);}
+.v7Home::before{content:"";position:absolute;inset:78px 0 0;pointer-events:none;background:linear-gradient(180deg,rgba(255,255,255,.10),rgba(128,99,209,.035) 48%,rgba(244,144,181,.035));}
+.v76MainCanvas{position:relative;padding:34px 0 28px}
+.v76GrandFrame{position:relative;width:min(1244px,calc(100% - 32px));margin:0 auto;padding:20px 22px 26px;border:1px solid rgba(102,78,151,.12);border-radius:42px;background:linear-gradient(145deg,rgba(255,255,255,.78),rgba(252,247,255,.69));box-shadow:var(--v76-shadow);backdrop-filter:blur(22px) saturate(1.04);overflow:hidden}
+.v76GrandFrame::before,.v76GrandFrame::after{content:"";position:absolute;border-radius:50%;pointer-events:none;filter:blur(.2px)}
+.v76GrandFrame::before{width:420px;height:420px;right:-230px;top:95px;background:radial-gradient(circle,rgba(205,188,255,.18),transparent 68%)}
+.v76GrandFrame::after{width:360px;height:360px;left:-210px;bottom:160px;background:radial-gradient(circle,rgba(255,204,225,.16),transparent 68%)}
+.v76GrandFrame>.v7Hero,.v76GrandFrame>.v7Chair,.v76GrandFrame>.v7Section{position:relative;z-index:1}
+.v76GrandFrame .v7Wrap{width:100%}
+
+/* remove the former separate outer-picture-frame illusion */
+.v76GrandFrame .v7HeroGrid::before,.v76GrandFrame .v7HeroGrid::after,
+.v76GrandFrame .v7Featured>.v7Wrap::before,.v76GrandFrame .v7News>.v7Wrap::before,
+.v76GrandFrame .v7Members>.v7Wrap::before,.v76GrandFrame .v7ChairShell::before{content:none!important;display:none!important}
+
+/* one canvas, several elegant inset frames */
+.v76GrandFrame .v7Hero{padding:20px 8px 35px}
+.v76GrandFrame .v7HeroGrid{padding:28px 34px;border:1px solid rgba(105,81,153,.08);border-radius:30px;background:linear-gradient(135deg,rgba(255,255,255,.46),rgba(253,247,255,.42));box-shadow:inset 0 1px 0 rgba(255,255,255,.9)}
+.v76GrandFrame .v7Chair{padding:12px 8px 20px}
+.v76GrandFrame .v7ChairShell{padding:18px;border:1px solid var(--v76-frame);border-radius:28px;background:rgba(255,255,255,.55);box-shadow:0 13px 34px rgba(70,49,105,.04)}
+.v76GrandFrame .v7Section{padding:22px 8px}
+.v76GrandFrame .v7Featured>.v7Wrap,.v76GrandFrame .v7News>.v7Wrap,.v76GrandFrame .v7Members>.v7Wrap{padding:25px 28px;border:1px solid var(--v76-frame);border-radius:28px;background:linear-gradient(145deg,rgba(255,255,255,.64),rgba(252,248,255,.52));box-shadow:0 12px 34px rgba(71,49,108,.035),inset 0 1px 0 rgba(255,255,255,.9)}
+.v76GrandFrame .v7Section+.v7Section{padding-top:12px}
+
+/* make the hierarchy read like one designed editorial canvas */
+.v76GrandFrame .v7CenteredTitle,.v76GrandFrame .v7TitleRow{position:relative}
+.v76GrandFrame .v7CenteredTitle::after{content:"";display:block;width:54px;height:1px;margin:13px auto 0;background:linear-gradient(90deg,transparent,#9b78dc,transparent);opacity:.6}
+.v76GrandFrame .v7TitleRow::after{content:"";position:absolute;left:0;right:0;bottom:-10px;height:1px;background:linear-gradient(90deg,rgba(113,89,168,.14),rgba(113,89,168,.02))}
+
+/* portrait visuals should feel like polished employee-ID photos */
+.v76SamplePortrait{display:block;width:100%;height:100%;object-fit:cover}
+.v7LeaderPhoto>.v76SamplePortrait,.v7MemberPhoto>.v76SamplePortrait,.v7RecPhoto>.v76SamplePortrait,.v7ProfilePhoto>.v76SamplePortrait{width:100%;height:100%}
+.v7Leader,.v7Member{border-color:rgba(93,70,139,.11);box-shadow:0 10px 24px rgba(63,43,96,.05),inset 0 1px 0 rgba(255,255,255,.98)}
+.v7Leader:hover,.v7Member:hover{border-color:rgba(109,82,176,.23);box-shadow:0 17px 36px rgba(73,49,111,.10),inset 0 1px 0 rgba(255,255,255,.98)}
+
+/* carry the same brand wash through footer instead of visually breaking the page */
+.v7Footer{margin-top:0;border-top:1px solid rgba(255,255,255,.46);background:linear-gradient(112deg,#6677ee 0%,#8f73df 42%,#c281d1 70%,#ef93aa 100%);box-shadow:0 -18px 50px rgba(76,57,119,.06)}
+
+@media(max-width:960px){.v76GrandFrame{width:calc(100% - 20px);padding:14px}.v76GrandFrame .v7HeroGrid{padding:24px}.v76GrandFrame .v7Featured>.v7Wrap,.v76GrandFrame .v7News>.v7Wrap,.v76GrandFrame .v7Members>.v7Wrap{padding:22px}}
+@media(max-width:720px){.v76MainCanvas{padding-top:16px}.v76GrandFrame{width:calc(100% - 12px);padding:8px;border-radius:28px}.v76GrandFrame .v7Hero{padding:8px 4px 20px}.v76GrandFrame .v7HeroGrid{padding:20px 17px;border-radius:23px}.v76GrandFrame .v7Chair{padding:8px 4px 14px}.v76GrandFrame .v7ChairShell{padding:12px;border-radius:22px}.v76GrandFrame .v7Section{padding:14px 4px}.v76GrandFrame .v7Featured>.v7Wrap,.v76GrandFrame .v7News>.v7Wrap,.v76GrandFrame .v7Members>.v7Wrap{padding:18px 14px;border-radius:22px}}

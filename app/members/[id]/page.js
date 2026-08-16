@@ -5,6 +5,7 @@ import SiteFooter from '../../../components/home/SiteFooter';
 import YouTubeInline from '../../../components/YouTubeInline';
 import Radar from '../../../components/Radar';
 import BrandIcon from '../../../components/BrandIcon';
+import SamplePortrait from '../../../components/SamplePortrait';
 import { DEFAULT_STRENGTH_COPY } from '../../../data/adminDefaults';
 export const dynamic='force-dynamic';
 
@@ -24,14 +25,14 @@ export default async function MemberDetail({params}){
  const strengthCopy={...DEFAULT_STRENGTH_COPY,...(detailAssets.strengthDescriptions||{})};
  const careers=(m.careers||[]).sort((a,b)=>(a.sort_order||0)-(b.sort_order||0));
  const raw=m.strengths||{}; const strengths={...defaultStrengths,...raw,통찰:raw.통찰??raw.분석??80}; delete strengths.분석;
- const {data:related}=await admin.from('members').select('id,name,job,profile_image_url,tags').eq('is_published',true).neq('id',m.id).limit(5);
+ const {data:related}=await admin.from('members').select('id,name,job,gender,profile_image_url,tags').eq('is_published',true).neq('id',m.id).limit(5);
  const profile=cleanLegacy(m.profile_image_url) || (Number(m.id)===1?'/assets/real/park-insik.jpg':Number(m.id)===2?'/assets/real/kim-gwangsun.jpg':'');
  return <div className="v7DetailPage">
    <SiteHeader/>
    <main className="v7DetailWrap">
     <div className="v7Breadcrumb"><a href="/">Home</a><span>›</span><a href="/members">Members</a><span>›</span><b>{m.name}</b></div>
     <section className="v7ProfileHero">
-      <div className="v7ProfilePhoto">{profile?<img src={profile} alt={`${m.name} 프로필`}/>:<div className="v7ProfileFallback">{(m.name||'?').slice(0,1)}</div>}</div>
+      <div className="v7ProfilePhoto">{profile?<img src={profile} alt={`${m.name} 프로필`}/>:<SamplePortrait id={m.id} gender={m.gender}/>}</div>
       <article className="v7ProfileInfo">
         <span className="v7Tier"><BrandIcon name="gem" size={13}/> {m.tier||'Gold'} Member</span><h1>{m.name}</h1><h2>{m.job}</h2>
         <p className="v7Tagline">{m.tagline||m.intro?.split('\n')[0]||'화성인사이드와 함께 성장하는 멤버입니다.'}</p>
@@ -47,7 +48,7 @@ export default async function MemberDetail({params}){
       <article className="v7Panel"><h2><span className="v7SectionHeadingIcon"><BrandIcon name="profile" size={20}/></span> 개인정보 소개</h2><p>{m.intro||'소개가 아직 등록되지 않았습니다.'}</p></article>
       <article className="v7Panel"><h2><span className="v7SectionHeadingIcon"><BrandIcon name="briefcase" size={20}/></span> 믿을 수 있는 경력 · 이력</h2><div className="v7Careers">{careers.length?careers.map(c=><div key={c.id}><time>{c.period}</time><section><b>{c.company}</b><em>{c.role}</em><p>{c.description}</p></section></div>):<p>등록된 경력이 없습니다.</p>}</div></article>
     </section>
-    <section className="v7Recommend v7Panel"><h2><span className="v7SectionHeadingIcon"><BrandIcon name="users" size={20}/></span> {m.name}님과 연결 가능성이 높은 화성인사이드 멤버</h2><div className="v7RecommendGrid">{(related||[]).map(r=>{const rp=cleanLegacy(r.profile_image_url);return <a href={`/members/${r.id}`} key={r.id}><div className="v7RecPhoto">{rp?<img src={rp} alt={`${r.name} 프로필`}/>:<span>{(r.name||'?').slice(0,1)}</span>}</div><b>{r.name}</b><small>{r.job}</small><em>{(r.tags||[]).slice(0,2).join(' · ')}</em></a>})}</div></section>
+    <section className="v7Recommend v7Panel"><h2><span className="v7SectionHeadingIcon"><BrandIcon name="users" size={20}/></span> {m.name}님과 연결 가능성이 높은 화성인사이드 멤버</h2><div className="v7RecommendGrid">{(related||[]).map(r=>{const rp=cleanLegacy(r.profile_image_url);return <a href={`/members/${r.id}`} key={r.id}><div className="v7RecPhoto">{rp?<img src={rp} alt={`${r.name} 프로필`}/>:<SamplePortrait id={r.id} gender={r.gender}/>}</div><b>{r.name}</b><small>{r.job}</small><em>{(r.tags||[]).slice(0,2).join(' · ')}</em></a>})}</div></section>
     <section className="v7Strength v7Panel">
       <article className="v7RadarPanel"><h2><span className="v7SectionHeadingIcon"><BrandIcon name="sparkles" size={20}/></span> 인사이더 강점 레이더</h2><p>회원이 직접 평가한 0~100점 셀프 어필 지표입니다.</p><div className="v7RadarWrap"><Radar values={strengths}/></div></article>
       <div className="v7StrengthCards">{cardOrder.map(k=><article key={k}><span><BrandIcon name={icons[k]} size={20}/></span><div><b>{k}</b><p>{strengthCopy[k]}</p></div></article>)}</div>

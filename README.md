@@ -22,3 +22,10 @@ DB / SQL 변경 없음.
 - 이메일은 실제 주소가 아닌 `example.com` 테스트 주소를 사용합니다.
 - 현재 Supabase DB에 반영하려면 `supabase/migrations/20260817_v7_5_sample_member_data.sql`을 SQL Editor에서 1회 실행하세요.
 - 이후 실제 회원 가입/프로필 수정 또는 관리자 수정값이 이 샘플 데이터를 대체합니다.
+
+## v7.6 Final visual pass
+- 메인 전체에 화성인사이드 보라/핑크/라벤더 세로 그라데이션 적용
+- Hero부터 40인까지 하나의 Grand Frame 안에 배치하고 각 섹션은 내부 소액자(surface)로 정리
+- Top10/40인/상세 추천/상세 프로필에 사진 미등록 시 회원별 고유 샘플 인물 비주얼 자동 표시
+- 실제 회원 사진이 등록되어 있으면 실제 사진이 항상 우선
+- DB/SQL 추가 변경 없음
