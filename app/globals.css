@@ -579,3 +579,39 @@ a{text-decoration:none;color:inherit;}
  .chairGreetingCopy{padding-top:17px}.chairGreetingText p{font-size:9px;line-height:1.4;margin-bottom:5px}.chairGreetingSignature{max-width:120px;max-height:42px}
  .commonStrengthCopy{grid-template-columns:1fr!important}
 }
+
+/* ===== v6.7 detail footer + thumbnail upload + hero custom image hotfix ===== */
+.webHeroArt.hasCustomHero{background:transparent!important;border-radius:0!important;overflow:visible!important;box-shadow:none!important}
+.webHeroArt.hasCustomHero:before{display:none!important;content:none!important}
+.webHeroArt.hasCustomHero>img{position:relative!important;z-index:10!important;width:100%!important;height:100%!important;object-fit:contain!important;object-position:center!important;display:block!important}
+
+.accountVideoThumbUpload{display:grid;grid-template-columns:230px 1fr;gap:18px;align-items:center;padding:14px;border:1px solid #e5e0ef;border-radius:16px;background:#fbfaff}
+.accountVideoThumbPreview{aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:linear-gradient(135deg,#ece8ff,#ffeef5);display:grid;place-items:center;color:#8b83a2;font-size:12px}
+.accountVideoThumbPreview img{width:100%;height:100%;object-fit:cover;display:block}
+.accountVideoThumbUpload>div:last-child{display:flex;flex-direction:column;align-items:flex-start;gap:7px}.accountVideoThumbUpload b{font-size:14px}.accountVideoThumbUpload p{margin:0;color:#777184;font-size:11px;line-height:1.55}
+.accountUploadBtn,.accountRemoveThumb{display:inline-flex;align-items:center;justify-content:center;height:36px;border-radius:9px;padding:0 13px;font-size:12px;font-weight:800;cursor:pointer}
+.accountUploadBtn{background:#725df5;color:#fff}.accountRemoveThumb{border:1px solid #ddd6ef;background:#fff;color:#6b607a}
+
+.memberConnectFinal{display:grid!important;grid-template-columns:minmax(0,1fr) auto!important;gap:24px!important;align-items:center!important;margin-top:18px!important;padding:14px 20px!important;border:1px solid #eadff4!important;border-radius:18px!important;background:linear-gradient(90deg,#fffafd 0%,#faf7ff 55%,#fff8fa 100%)!important;box-shadow:0 7px 22px rgba(73,54,119,.045)}
+.memberConnectLead{display:flex!important;flex-direction:row!important;align-items:center!important;gap:15px!important;min-width:0}
+.memberConnectLead>div{display:flex;flex-direction:column;gap:3px}.memberConnectLead b{font-size:17px;color:#24202c}.memberConnectLead span:not(.memberConnectIcon){font-size:11px;color:#7b7484}
+.memberConnectIcon{width:54px;height:54px;flex:0 0 54px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,#7a6bf6,#f3a2c1);box-shadow:0 8px 20px rgba(119,93,231,.2)}
+.memberConnectIcon svg{width:26px;height:26px;stroke:#fff;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.memberConnectFinal .memberConnectActions{display:grid!important;grid-template-columns:1fr 1fr!important;gap:12px!important;min-width:440px}
+.memberConnectFinal .memberConnectActions a{height:48px!important;min-width:210px!important;padding:0 22px!important;border-radius:10px!important;display:flex!important;align-items:center!important;justify-content:center!important;gap:10px!important;background:linear-gradient(135deg,#735df4,#9f67eb)!important;color:#fff!important;font-size:13px!important;font-weight:800!important;text-decoration:none!important}
+.memberConnectFinal .memberConnectActions a.ghost{background:#fff!important;color:#715eff!important;border:1.5px solid #715eff!important}
+.ctaBtnIcon{width:22px;height:22px;display:grid;place-items:center}.ctaBtnIcon svg{width:21px;height:21px;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.memberDetailFooter.webFooter{margin-top:10px;border-radius:18px;overflow:hidden;padding:27px 0 30px!important;box-shadow:0 10px 28px rgba(89,72,160,.08)}
+.memberDetailFooter .webWrap{width:calc(100% - 46px)!important}.memberDetailFooter .webFooterGrid{gap:28px!important}.memberDetailFooter .webFooterBrand{font-size:17px!important}.memberDetailFooter .webFooterGrid>div{font-size:11px!important}
+
+@media(max-width:900px){
+ .memberConnectFinal{grid-template-columns:1fr!important}.memberConnectFinal .memberConnectActions{min-width:0;width:100%}
+ .accountVideoThumbUpload{grid-template-columns:180px 1fr}
+}
+@media(max-width:600px){
+ .memberConnectFinal{padding:14px!important;gap:14px!important}.memberConnectLead{align-items:flex-start!important}.memberConnectIcon{width:46px;height:46px;flex-basis:46px}.memberConnectLead b{font-size:15px}
+ .memberConnectFinal .memberConnectActions{grid-template-columns:1fr!important}.memberConnectFinal .memberConnectActions a{width:100%!important;min-width:0!important}
+ .memberDetailFooter .webWrap{width:calc(100% - 28px)!important}.memberDetailFooter .webFooterGrid{grid-template-columns:1fr 1fr!important;gap:22px 14px!important}
+ .accountVideoThumbUpload{grid-template-columns:1fr}.accountVideoThumbPreview{width:100%}
+}
+@media(max-width:420px){.memberDetailFooter .webFooterGrid{grid-template-columns:1fr!important}}

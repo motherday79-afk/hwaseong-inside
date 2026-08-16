@@ -2,6 +2,7 @@ export const IMAGE_SPECS = {
   chairVideo: { label: '의장 영상 썸네일', width: 1600, height: 900, minWidth: 960, minHeight: 540, ratio: '16:9', format: 'JPG / WEBP', note: '권장 1600×900px. 썸네일 자체에 제목이 포함돼도 됩니다.' },
   chairPortrait: { label: '의장 인사말 사진', width: 960, height: 1200, minWidth: 720, minHeight: 900, ratio: '4:5', ratioTolerance: .14, format: 'JPG / WEBP', note: '권장 960×1200px(4:5). 허리 위 상반신 세로형 사진을 등록하면 메인 카드 안에서 자동으로 맞춰집니다.' },
   memberProfile: { label: '회원 프로필 원본', width: 1200, height: 1200, minWidth: 720, minHeight: 720, ratio: '1:1', ratioTolerance: .16, format: 'JPG / WEBP', note: '권장 1200×1200px. Top10·40인·상세페이지에서 동일 원본을 자동 사용합니다.' },
+  memberVideoThumbnail: { label: '회원 상세 영상 썸네일', width: 1600, height: 900, minWidth: 960, minHeight: 540, ratio: '16:9', ratioTolerance: .16, format: 'JPG / PNG / WEBP', note: '권장 1600×900px. 상세페이지 영상 영역에 맞춰 자동 표시됩니다.' },
   newsCover: { label: '공지 & 뉴스 대표 이미지', width: 1200, height: 675, minWidth: 720, minHeight: 405, ratio: '16:9', format: 'JPG / WEBP', note: '권장 1200×675px. 목록/메인 카드에서 자동 크롭됩니다.' },
   heroVisual: { label: '메인 히어로 비주얼', width: 1600, height: 1200, minWidth: 800, minHeight: 600, ratio: '4:3', format: 'PNG / WEBP / SVG', note: '장식 그래픽은 투명 PNG 또는 SVG 권장.' },
   signature: { label: '의장 서명', width: 1200, height: 400, minWidth: 600, minHeight: 180, ratio: '3:1', ratioTolerance: .25, format: '투명 PNG', note: '권장 1200×400px. 배경 투명, 검정 또는 짙은 남색 잉크 권장.' },

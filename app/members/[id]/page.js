@@ -3,6 +3,7 @@ import { createAdminClient } from '../../../lib/supabase/admin';
 import YouTubeInline from '../../../components/YouTubeInline';
 import Radar from '../../../components/Radar';
 import { DEFAULT_STRENGTH_COPY } from '../../../data/adminDefaults';
+import SiteFooter from '../../../components/home/SiteFooter';
 export const dynamic='force-dynamic';
 
 const defaultStrengths={창의:80,연결:80,통찰:80,공감:80,실행:80,성장:80};
@@ -26,6 +27,10 @@ export default async function MemberDetail({params}){
   <section className="memberDetailCols memberDetailColsV64"><article><h2>◎ 개인정보 소개</h2><p>{m.intro||'소개가 아직 등록되지 않았습니다.'}</p></article><article><h2>▣ 믿을 수 있는 경력 · 이력</h2><div className="careerRows">{careers.length?careers.map(c=><div key={c.id}><time>{c.period}</time><section><b>{c.company}</b><span>{c.role}</span><p>{c.description}</p></section></div>):<p>등록된 경력이 없습니다.</p>}</div></article></section>
   <section className="memberRecommend"><div className="detailSectionTitle"><h2>♡ {m.name}님과 해당 콘텐츠가 높은 화성인사이드 멤버 추천</h2></div><div>{(related||[]).map(r=><a href={`/members/${r.id}`} key={r.id}>{r.profile_image_url?<img src={r.profile_image_url} alt=""/>:<span/>}<b>{r.name}</b><small>{r.job}</small><em>{(r.tags||[]).slice(0,2).join(' · ')}</em></a>)}</div></section>
   <section className="memberStrengthSection memberStrengthSelf"><article className="memberRadarCard"><h2>☆ 인사이더 강점 레이더</h2><p className="memberRadarCaption">회원이 직접 평가한 0~100점 셀프 어필 지표입니다.</p><Radar values={strengths}/></article><div className="memberStrengthCards commonStrengthCopy">{cardOrder.map(k=><article key={k}><div className="strengthCopyIcon">{icons[k]}</div><div><b>{k}</b><p>{strengthCopy[k]}</p></div></article>)}</div></section>
-  <section className="memberConnect"><div><b>함께 연결하고 싶다면?</b><span>새로운 인연을 배우고, 함께 성장하며 더 큰 가치를 만들어보세요.</span></div><div className="memberConnectActions"><a href="/login">네트워크 요청하기</a><a className="ghost" href="/community">메시지 보내기</a></div></section>
+  <section className="memberConnect memberConnectFinal">
+   <div className="memberConnectLead"><span className="memberConnectIcon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M21 3 10.6 13.4"/><path d="m21 3-6.7 18-3.7-7.6L3 9.7 21 3Z"/></svg></span><div><b>함께 연결하고 싶다면?</b><span>새로운 인연을 배우고, 함께 성장하며 더 큰 가치를 만들어보세요.</span></div></div>
+   <div className="memberConnectActions"><a href="/login"><span className="ctaBtnIcon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><circle cx="9" cy="8" r="3"/><path d="M3.5 19c.5-4 2.4-6 5.5-6s5 2 5.5 6"/><path d="M18 7v6M15 10h6"/></svg></span>네트워크 요청하기</a><a className="ghost" href="/community"><span className="ctaBtnIcon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg></span>메시지 보내기</a></div>
+  </section>
+  <SiteFooter className="memberDetailFooter"/>
  </main>
 }

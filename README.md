@@ -17,3 +17,11 @@ v6.6.2 cumulative final hotfix
 
 ## DB
 추가 SQL 실행은 필요 없습니다. 기존 `members.strengths` JSON 필드와 `site_state.payload`를 그대로 사용합니다.
+
+
+## v6.7 hotfix
+- 회원 상세 하단 CTA를 예시 레이아웃에 맞춰 아이콘 포함 가로 카드로 개선
+- 상세 하단에 메인과 동일한 관리자 연동 Footer 적용
+- 회원 상세 유튜브 썸네일은 URL이 아닌 파일 업로드 방식으로 변경
+- 커스텀 Hero 비주얼 등록 시 기본 가상 그래픽 레이어를 완전히 비활성화
+- 추가 SQL 없음
