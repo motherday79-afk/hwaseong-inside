@@ -7,7 +7,7 @@ import MembersSection from '../components/home/MembersSection';
 import SiteFooter from '../components/home/SiteFooter';
 
 export default function Home(){
-  return <main className="domHome">
+  return <main className="webHome">
     <SiteHeader/>
     <Hero/>
     <ChairSection/>

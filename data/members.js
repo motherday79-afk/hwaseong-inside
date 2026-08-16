@@ -56,8 +56,8 @@ export const members = names.map(([name, job], index) => {
       school: '한양대학교 대학원 석사',
       area: '경기도 · 화성특례시',
       tags: ['영화제작','AI콘텐츠 제작','문화예술기획','디지털미디어 컨설팅'],
-      image: '/assets/members/member-01-real.jpg',
-      profileImage: '/assets/members/profile-01.jpg',
+      image: '/assets/real/park-insik.jpg',
+      profileImage: '/assets/real/park-insik.jpg',
       intro: '안녕하십니까. 영화와 문화와 기술이 함께하는 세상을 만들어가는 박인식입니다. 사람과 사람이 문화와 기술과 스토리로 연결되는 아름다운 세상을 함께 만들어갈 동료시민들을 만나는 것이 가장 큰 기쁨입니다.',
       careers: [
         { period: '현재', company: '화성인사이드', role: '의장 / 영화감독', desc: '영화·문화·기술이 연결되는 프리미엄 네트워크를 기획하고 운영합니다.' },
@@ -76,8 +76,8 @@ export const members = names.map(([name, job], index) => {
       school: '단국대 뮤지컬과 학사',
       area: '서울 · 경기',
       tags: ['브랜드 전략','콘텐츠 기획','디지털 마케팅','커뮤니케이션','프로젝트 리드'],
-      image: '/assets/members/member-02-real.jpg',
-      profileImage: '/assets/members/profile-02-real.jpg',
+      image: '/assets/real/kim-gwangsun.jpg',
+      profileImage: '/assets/real/kim-gwangsun.jpg',
       intro: '안녕하세요, 김광선입니다. 저는 사람과 콘텐츠, 그리고 기획을 연결하는 기획과 마케팅의 힘을 믿습니다. 브랜드가 가진 이야기를 더 많은 사람에게 닿게 만들고, 실행 가능한 전략으로 성과를 만드는 일을 해왔습니다.'
     };
   }
