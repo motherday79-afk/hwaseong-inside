@@ -1,0 +1,9 @@
+화성인사이드 v5.2 아이디 로그인 전환
+
+1) GitHub에 이 버전을 전체 덮어쓰기 업로드
+2) Supabase SQL Editor에서 supabase/migrations/20260816_username_login.sql 을 1회 실행
+3) Vercel 새 배포 완료 후 /login 접속
+4) 기존 motherday79@gmail.com 계정은 기본 아이디 motherday79 로 로그인
+5) 신규 가입자는 아이디/비밀번호/이름/직책/이메일을 입력하며 로그인은 아이디+비밀번호 사용
+
+이메일은 Supabase Auth 내부 식별 및 연락/복구 정보로 유지되지만 로그인 화면에서는 요구하지 않습니다.

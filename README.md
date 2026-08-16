@@ -174,3 +174,8 @@ where user_id = (
 - Storage 쓰기는 서버 업로드 API를 통해서만 수행
 - 주요 관리자/회원 수정은 `audit_logs`에 기록
 
+
+## v5.2 아이디 로그인 전환
+기존 DB를 사용 중이면 `supabase/migrations/20260816_username_login.sql`을 Supabase SQL Editor에서 1회 실행하세요.
+기존 이메일 계정은 이메일 앞부분을 기준으로 기본 아이디가 자동 부여됩니다. `motherday79@gmail.com`은 `motherday79`가 됩니다.
+신규 회원가입은 아이디/비밀번호/이름/직책/이메일을 받고, 실제 로그인 화면에서는 아이디+비밀번호만 사용합니다.

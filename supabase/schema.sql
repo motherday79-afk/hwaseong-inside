@@ -5,6 +5,7 @@ create extension if not exists pgcrypto;
 
 create table if not exists public.app_users (
   user_id uuid primary key references auth.users(id) on delete cascade,
+  username text not null unique check (username ~ '^[a-z0-9_]{4,20}$'),
   role text not null default 'member' check (role in ('admin','editor','member')),
   status text not null default 'active' check (status in ('active','suspended')),
   created_at timestamptz not null default now(),
@@ -81,7 +82,9 @@ $$;
 create or replace function public.handle_new_user()
 returns trigger language plpgsql security definer set search_path=public as $$
 begin
-  insert into public.app_users(user_id,role,status) values(new.id,'member','active') on conflict(user_id) do nothing;
+  insert into public.app_users(user_id,username,role,status)
+  values(new.id,lower(trim(coalesce(new.raw_user_meta_data->>'username',''))),'member','active')
+  on conflict(user_id) do nothing;
   update public.members set user_id=new.id, updated_at=now()
     where user_id is null and lower(public_email)=lower(coalesce(new.email,''));
   if not found then
