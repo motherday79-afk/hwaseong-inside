@@ -1,3 +1,8 @@
+v6.6.2 cumulative final hotfix
+- chair video YouTube icon/text cleanup
+- chair greeting exact layout
+- member detail philosophy + self radar
+
 # 화성인사이드 v6.6 — 회원 셀프어필 레이더 수정
 
 ## 핵심 변경

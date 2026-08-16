@@ -24,6 +24,7 @@ export default function YouTubeInline({url,thumbnail='',title='영상 재생',cl
  if(!id) return <div className={`inlineVideo empty ${className}`}><div className="inlineVideoEmpty">영상 URL을 등록하면 이 영역에서 바로 재생됩니다.</div></div>;
  if(playing) return <div className={`inlineVideo playing ${className}`}><iframe src={`https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&modestbranding=1&playsinline=1`} title={title} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen/></div>;
  return <button type="button" className={`inlineVideo ${className}`} onClick={()=>setPlaying(true)} aria-label={`${title} 재생`}>
-  {poster?<img src={poster} alt=""/>:<span className="inlineVideoBackdrop"/>}<span className="inlinePlay" aria-hidden="true"><span className="inlinePlayTriangle"/></span><span className="inlineVideoLabel">화성인사이드에서 재생</span>
+  {poster?<img src={poster} alt=""/>:<span className="inlineVideoBackdrop"/>}
+  <span className="inlinePlay youtubeStyle" aria-hidden="true"><span className="inlinePlayTriangle"/></span>
  </button>;
 }

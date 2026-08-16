@@ -5,22 +5,21 @@ import YouTubeInline from '../YouTubeInline';
 export default function ChairSection(){
   const {data}=useSiteAdminData();
   const c=data.chair;
-  const lines=(c.greeting||'').split('\n').filter((line,i,arr)=>line.trim() || (i>0 && arr[i-1]?.trim()));
-  return <section className="webSection" id="network"><div className="webWrap webChairGrid">
-    <div className="webVideo">
+  return <section className="webSection chairSectionFinal" id="network"><div className="webWrap chairGridFinal">
+    <div className="chairVideoFinal">
       <YouTubeInline url={c.videoUrl} thumbnail={c.videoThumbnailUrl} title={`${c.name} 의장 인사 영상`} className="chairInlineVideo"/>
-      <div className="webVideoText"><small>의장 인사 영상</small></div>
+      <span className="chairVideoBadge">의장 인사 영상</span>
     </div>
-
-    <article className="webChairCard chairCardV65">
-      <div className="chairV65Left">
+    <article className="chairGreetingFinal">
+      <div className="chairGreetingIdentity">
         <h2>의장 인사말</h2>
-        <div className="webChairPhoto"><img src={c.portraitUrl||'/assets/real/park-insik.jpg'} alt={`${c.name} ${c.title}`}/></div>
-        <div className="webChairIdentity"><span>{c.title}</span><strong>{c.name}</strong></div>
+        <div className="chairGreetingPortrait"><img src={c.portraitUrl||'/assets/real/park-insik.jpg'} alt={`${c.name} ${c.title}`}/></div>
+        <span>{c.title}</span>
+        <strong>{c.name}</strong>
       </div>
-      <div className="chairV65Right">
-        <div className="webGreetingText">{lines.map((line,i)=>line.trim()?<p key={i}>{line}</p>:<div className="chairGreetingGap" key={i}/>)}</div>
-        {c.signatureUrl&&<img className="webSignature" src={c.signatureUrl} alt={`${c.name} 서명`}/>}      
+      <div className="chairGreetingCopy">
+        <div className="chairGreetingText">{(c.greeting||'').split(/\n+/).filter(Boolean).map((line,i)=><p key={i}>{line}</p>)}</div>
+        {c.signatureUrl?<img className="chairGreetingSignature" src={c.signatureUrl} alt={`${c.name} 서명`}/>:<div className="chairGreetingSignatureText">{c.name}</div>}
       </div>
     </article>
   </div></section>;
