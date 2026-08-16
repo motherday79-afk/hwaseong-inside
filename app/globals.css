@@ -434,3 +434,44 @@ a{text-decoration:none;color:inherit;}
  .webVideo .inlinePlay{width:38px;height:27px;border-radius:7px}
  .webVideo .inlinePlayTriangle{border-top-width:6px;border-bottom-width:6px;border-left-width:10px}
 }
+
+/* v6.4 chair greeting card — reference-layout structure, video-height matched */
+.chairCardV64{display:grid!important;grid-template-columns:36% 64%!important;gap:0!important;padding:20px!important;align-items:stretch!important}
+.webChairMedia{display:flex;flex-direction:column;min-width:0;height:100%}
+.chairCardV64 .webChairPhoto{flex:1;min-height:0;height:auto!important;border-radius:16px;background:linear-gradient(145deg,#f4eaff,#fff0f6);overflow:hidden}
+.chairCardV64 .webChairPhoto img{width:100%;height:100%;object-fit:cover;object-position:center 20%}
+.webChairIdentity{flex:0 0 auto;padding:10px 2px 0;line-height:1.25}
+.webChairIdentity span{display:block;color:#7b7784;font-size:10px;margin-bottom:3px}
+.webChairIdentity strong{display:block;color:#1e1c24;font-size:15px;letter-spacing:-.3px}
+.chairCardV64 .webChairCopy{height:100%!important;min-height:0!important;padding:2px 2px 0 20px!important;display:flex!important;flex-direction:column!important;overflow:hidden!important}
+.chairCardV64 .webChairCopy h2{margin:0 0 12px!important;font-size:17px!important;color:#4747a8!important;line-height:1.2;flex:0 0 auto}
+.chairCardV64 .webGreetingText{flex:1!important;min-height:0!important;overflow:hidden!important;padding-right:2px}
+.chairCardV64 .webGreetingText p{font-size:11.2px!important;line-height:1.52!important;margin:0 0 7px!important;color:#55515d!important;word-break:keep-all}
+.chairGreetingGap{height:5px}
+.chairCardV64 .webSignature{flex:0 0 auto!important;display:block;max-width:145px!important;max-height:42px!important;width:auto;height:auto;object-fit:contain;object-position:left center;margin:7px 0 0 auto!important}
+
+/* v6.4 account detailed-profile fields */
+.accountPreviewLink{display:block;margin-top:12px;text-align:center;color:#705cff;font-size:12px;font-weight:800}
+.accountStrengths{border-top:1px solid #eee8f4;border-bottom:1px solid #eee8f4;padding:18px 0}
+.accountStrengths h3{margin:0 0 4px}.accountStrengths>p{margin:0 0 13px;color:#888;font-size:12px;font-weight:400}
+.accountStrengths>div{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.accountStrengths>div label{display:grid;grid-template-columns:1fr 80px;align-items:center;border:1px solid #eee8f4;border-radius:12px;padding:10px 12px}.accountStrengths>div span{font-weight:800}.accountStrengths input{text-align:center;padding:8px!important}
+.adminStrengthEdit{margin:18px 0;padding:18px;border:1px solid #eee8f4;border-radius:16px;background:#fbfaff}.adminStrengthEdit h3{margin:0 0 12px}.adminStrengthEdit>div{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+
+/* v6.4 member detail — DOM layout modeled on approved reference */
+.memberDetailDom.v64{max-width:1180px;margin:0 auto;padding:18px 24px 70px;background:#fcfbff}
+.memberHeroV64{grid-template-columns:34% 1fr;gap:22px}.memberHeroV64 .memberPhotoDom{height:auto;aspect-ratio:1/1;border-radius:18px;background:linear-gradient(145deg,#eadcff,#ffdce8)}.memberHeroV64 .memberPhotoDom img{object-position:center 18%}
+.memberHeroV64>article{padding:25px 28px;border-radius:18px}.memberHeroV64 h1{font-size:36px;margin:10px 0 2px}.memberHeroV64 h2{font-size:15px}.memberHeroV64 .memberIntroLine{font-size:15px;color:#6554ef;margin:14px 0 18px;line-height:1.55}.memberHeroV64 dl{grid-template-columns:1fr 1fr;gap:12px 22px}.memberHeroV64 dt{min-width:74px;font-size:12px}.memberHeroV64 dd{font-size:12px}.memberHeroV64 .memberTags{margin-top:16px}.memberHeroV64 .memberTags span{padding:6px 11px;background:#f1edff;color:#6554ef}
+.memberStoryGrid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:22px}.memberVideoCard,.memberPhilosophy{border:1px solid #ede8f4;border-radius:18px;background:#fff;overflow:hidden;min-height:280px}.memberVideoCard{display:flex}.memberVideoCard .memberProfileVideo{width:100%;height:100%;min-height:280px;border-radius:0}.memberVideoPlaceholder{width:100%;display:flex;flex-direction:column;justify-content:center;padding:30px;background:radial-gradient(circle at 80% 20%,#eddcff,transparent 30%),linear-gradient(135deg,#17141e,#3a2f4e);color:#fff}.memberVideoPlaceholder span{font-size:10px;letter-spacing:1.5px;color:#d9caff}.memberVideoPlaceholder strong{font-size:26px;margin:8px 0}.memberVideoPlaceholder small{opacity:.75}.memberPhilosophy{padding:28px;background:radial-gradient(circle at 82% 38%,rgba(179,120,255,.16),transparent 30%),linear-gradient(135deg,#fff,#fff8fc)}.memberPhilosophy>b{color:#6554ef}.memberPhilosophy h2{font-size:21px;margin:20px 0 16px}.memberPhilosophy p{font-size:12px;line-height:1.65;color:#666;margin:10px 0;padding-left:19px;position:relative}.memberPhilosophy p:before{content:'✦';position:absolute;left:0;color:#7660f7}
+.memberDetailColsV64{grid-template-columns:.72fr 1.28fr;gap:22px;margin-top:22px}.memberDetailColsV64>article{border-radius:18px}.memberDetailColsV64>article>h2{font-size:17px;color:#2e2935}.memberDetailColsV64>article:first-child p{font-size:13px;line-height:1.85}.memberDetailColsV64 .careerRows>div{grid-template-columns:90px 1fr}.memberDetailColsV64 .careerRows section{padding:12px 14px}.memberDetailColsV64 .careerRows section b{display:inline-block;font-size:13px}.memberDetailColsV64 .careerRows section p{font-size:11px;line-height:1.5}
+.memberRecommend{border-radius:18px}.memberRecommend .detailSectionTitle h2{font-size:16px}.memberRecommend a em{display:block;margin-top:4px;color:#765eff;font-size:9px;font-style:normal}.memberRecommend img{aspect-ratio:1.12/1;object-position:center 18%}
+.memberStrengthSection{display:grid;grid-template-columns:38% 62%;gap:16px;margin-top:22px}.memberRadarCard,.memberStrengthCards article{background:#fff;border:1px solid #ede8f4;border-radius:18px}.memberRadarCard{padding:20px}.memberRadarCard h2{font-size:17px;margin:0}.memberRadarCard .radarWrap{max-width:260px;margin:0 auto}.memberStrengthCards{display:grid;grid-template-columns:1fr 1fr;gap:10px}.memberStrengthCards article{padding:13px 15px}.memberStrengthCards article>div{display:flex;align-items:center;justify-content:space-between}.memberStrengthCards b{color:#403a48}.memberStrengthCards span{font-size:11px;font-weight:900;color:#745cff;background:#f1edff;border-radius:12px;padding:3px 7px}.memberStrengthCards p{font-size:11px;line-height:1.45;color:#777;margin:6px 0 0}.memberConnectActions{display:flex;gap:10px}.memberConnectActions a{background:#715eff;color:#fff;border-radius:12px;padding:11px 18px;font-weight:700}.memberConnectActions a.ghost{background:#fff;color:#715eff;border:1px solid #715eff}
+
+@media(max-width:900px){
+ .chairCardV64{grid-template-columns:35% 65%!important;padding:18px!important}.chairCardV64 .webChairCopy{padding-left:17px!important}.chairCardV64 .webGreetingText p{font-size:11px!important}
+ .memberHeroV64{grid-template-columns:1fr}.memberHeroV64 .memberPhotoDom{max-width:520px;width:100%;margin:0 auto}.memberStoryGrid,.memberDetailColsV64,.memberStrengthSection{grid-template-columns:1fr}.memberStrengthCards{grid-template-columns:repeat(2,1fr)}
+ .accountStrengths>div,.adminStrengthEdit>div{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:560px){
+ .chairCardV64{grid-template-columns:34% 66%!important;aspect-ratio:auto!important;min-height:265px!important;padding:13px!important}.chairCardV64 .webChairIdentity{padding-top:7px}.chairCardV64 .webChairIdentity span{font-size:9px}.chairCardV64 .webChairIdentity strong{font-size:13px}.chairCardV64 .webChairCopy{padding-left:12px!important}.chairCardV64 .webChairCopy h2{font-size:15px!important;margin-bottom:8px!important}.chairCardV64 .webGreetingText p{font-size:9.5px!important;line-height:1.4!important;margin-bottom:5px!important}.chairCardV64 .webSignature{max-width:105px!important;max-height:30px!important;margin-top:4px!important}
+ .memberDetailDom.v64{padding:10px 12px 50px}.memberHeroV64>article{padding:19px}.memberHeroV64 h1{font-size:30px}.memberHeroV64 dl{grid-template-columns:1fr}.memberStoryGrid{gap:12px;margin-top:12px}.memberVideoCard,.memberPhilosophy{min-height:230px}.memberPhilosophy{padding:20px}.memberDetailColsV64{gap:12px;margin-top:12px}.memberStrengthCards{grid-template-columns:1fr}.memberStrengthSection{gap:12px;margin-top:12px}.memberConnectActions{width:100%;flex-direction:column}.memberConnectActions a{text-align:center}.accountStrengths>div,.adminStrengthEdit>div{grid-template-columns:1fr}
+}
