@@ -1,0 +1,10 @@
+화성인사이드 v5.1 빌드 수정판
+
+수정사항
+1. /login의 useSearchParams 제거: Next.js 15 정적 생성 단계의 Suspense 빌드 오류 방지
+2. /account 및 /admin 인증 영역을 force-dynamic으로 명시
+3. Supabase 서버 클라이언트 환경변수 오류 메시지 보강
+4. 기존 DB/Auth/RLS/Storage/관리자 기능은 유지
+
+Vercel 환경변수 4개는 기존 값 그대로 유지합니다.
+업로드 후 새로운 배포가 자동 시작됩니다.
