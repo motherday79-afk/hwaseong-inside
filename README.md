@@ -1,27 +1,21 @@
-v6.6.2 cumulative final hotfix
-- chair video YouTube icon/text cleanup
-- chair greeting exact layout
-- member detail philosophy + self radar
+# 화성인사이드 CLEAN v7
 
-# 화성인사이드 v6.6 — 회원 셀프어필 레이더 수정
+기존 v6 계열에서 누적된 화면 CSS/마스터 잔재와 placeholder 회원 이미지 재사용을 끊은 클린 렌더링 버전입니다.
 
-## 핵심 변경
-- 회원별 강점은 이미지가 아니라 실제 6각 레이더 차트로 렌더링합니다.
-- 회원 본인이 `/account`에서 창의 / 연결 / 통찰 / 공감 / 실행 / 성장을 각각 0~100점으로 입력합니다.
-- 관리자는 `/admin/members`에서 같은 6개 점수를 수정할 수 있습니다.
-- 기존 `분석` 값이 저장돼 있으면 `통찰` 값으로 호환 표시합니다.
-- 상세페이지 오른쪽 6개 강점 설명 카드는 전회원 공통입니다.
-- 공통 설명문은 `/admin/detail-assets`에서 수정할 수 있습니다.
-- 화성인사이드 철학 공통 이미지는 기존대로 전회원 공통 적용됩니다.
-- 기존 강점 공통 이미지 업로드 방식은 제거했습니다.
+## 이번 버전 핵심
+- DB/Auth/관리자/게시판 기능 유지
+- 메인/상세는 `v7*` 전용 클래스만 사용하여 과거 `.webLeader`, `.webMember`, `.memberConnect`, `.webHeroArt` 충돌 차단
+- Hero: 관리자 이미지가 있으면 그 이미지 하나만 렌더링. 가상 레이어/기본 이미지 중첩 없음
+- 의장 영상: 작은 `의장 인사 영상` 배지 + YouTube형 빨간 재생 버튼
+- 의장 인사말: 영상과 같은 행에 사진/직책/이름/인사말/서명 레이아웃
+- Top10/40인: 과거 저해상도 local placeholder 얼굴 재사용 제거. 이미지 없는 회원은 이름 첫 글자 기본 아바타
+- 회원이 프로필 사진을 등록하면 DB의 `profile_image_url` 한 장을 메인 Top10/40인/상세에서 공통 사용
+- 상세: 공통 철학, 개인 소개/경력, 추천 멤버, 회원별 6각 레이더, 공통 강점 설명 카드, CTA, 메인과 동일 Footer
+- 상세 영상 썸네일은 기존 v6.7의 파일 업로드 방식 유지
 
-## DB
-추가 SQL 실행은 필요 없습니다. 기존 `members.strengths` JSON 필드와 `site_state.payload`를 그대로 사용합니다.
+## DB 관련
+기존 DB를 그대로 사용합니다. 추가 SQL 실행은 필수 아님.
+`seed.sql` 마지막에는 과거 `/assets/members/*` placeholder URL을 신규 초기화 시 제거하는 정리 SQL이 포함돼 있습니다.
 
-
-## v6.7 hotfix
-- 회원 상세 하단 CTA를 예시 레이아웃에 맞춰 아이콘 포함 가로 카드로 개선
-- 상세 하단에 메인과 동일한 관리자 연동 Footer 적용
-- 회원 상세 유튜브 썸네일은 URL이 아닌 파일 업로드 방식으로 변경
-- 커스텀 Hero 비주얼 등록 시 기본 가상 그래픽 레이어를 완전히 비활성화
-- 추가 SQL 없음
+## GitHub 업로드
+ZIP을 풀어 내부 파일 전체를 GitHub 저장소 루트에 덮어쓰기 업로드하세요.

@@ -35,16 +35,16 @@ export const members = names.map(([name, job], index) => {
       { period: '2016.03 - 2019.06', company: 'Dear Media', role: '기획자', desc: '브랜드 기획, SNS 콘텐츠, 오프라인 협업 프로젝트 진행' }
     ],
     strengths: {
-      '센스': 78 + (index % 16),
-      '끈기': 70 + ((index * 3) % 20),
-      '열정': 76 + ((index * 5) % 18),
-      '꿈': 80 + ((index * 7) % 15),
-      '재능': 72 + ((index * 2) % 20),
-      '협업': 75 + ((index * 4) % 18)
+      '창의': 78 + (index % 16),
+      '연결': 70 + ((index * 3) % 20),
+      '통찰': 76 + ((index * 5) % 18),
+      '공감': 80 + ((index * 7) % 15),
+      '실행': 72 + ((index * 2) % 20),
+      '성장': 75 + ((index * 4) % 18)
     },
     colors: colors[index % colors.length],
-    image: `/assets/members/member-${String((index % 30)+1).padStart(2,'0')}.png`,
-    profileImage: index === 1 ? '/assets/members/profile-02.png' : `/assets/members/member-${String((index % 30)+1).padStart(2,'0')}.png`
+    image: '',
+    profileImage: ''
   };
 
   if (index === 0) {

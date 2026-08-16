@@ -67,3 +67,9 @@ on conflict(id) do update set category=excluded.category,title=excluded.title,ex
 -- 명시적 ID 시드 후 identity sequence를 현재 최대값으로 맞춥니다.
 select setval(pg_get_serial_sequence('public.members','id'), (select max(id) from public.members), true);
 select setval(pg_get_serial_sequence('public.news_posts','id'), (select max(id) from public.news_posts), true);
+
+-- CLEAN v7: 과거 로컬 placeholder 얼굴 재사용을 제거합니다.
+-- 실제 회원 사진은 가입/프로필 수정에서 Storage 업로드 후 다시 채워집니다.
+update public.members
+set profile_image_url = null
+where id > 2 and profile_image_url like '/assets/members/%';
