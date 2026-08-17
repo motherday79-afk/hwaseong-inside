@@ -5,6 +5,7 @@ import './design-v7-3.css';
 import './design-v7-6.css';
 import './design-v7-7.css';
 import './detail-ux-v7-8.css';
+import './profile-editor-v7-10.css';
 
 export const metadata = {
   title: '화성인사이드',

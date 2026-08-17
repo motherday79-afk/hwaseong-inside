@@ -19,7 +19,7 @@ export async function PUT(request){
   if(error)return NextResponse.json({error:error.message},{status:500});
   if(data?.id && Array.isArray(body.careers)){
     await admin.from('careers').delete().eq('member_id',data.id);
-    if(body.careers.length) await admin.from('careers').insert(body.careers.slice(0,12).map((c,i)=>({member_id:data.id,sort_order:i,period:c.period||'',company:c.company||'',role:c.role||'',description:c.description||c.desc||''})));
+    if(body.careers.length) await admin.from('careers').insert(body.careers.map((c,i)=>({member_id:data.id,sort_order:i,period:c.period||'',company:c.company||'',role:c.role||'',description:c.description||c.desc||''})));
   }
   await admin.from('audit_logs').insert({actor_id:user.id,action:'member.self_update',target_type:'member',target_id:String(data?.id||''),payload:patch});
   return NextResponse.json({member:data});

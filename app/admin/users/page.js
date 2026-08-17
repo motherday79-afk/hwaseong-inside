@@ -1,14 +1,15 @@
 'use client';
 import { useEffect,useMemo,useState } from 'react';
 import { PageTitle,Card,Field,Input,Textarea,Badge } from '../../../components/admin/AdminUI';
-const parseTags=v=>[...new Set(String(v||'').split(/[\n,]+|\s+(?=#)/g).map(x=>x.trim().replace(/^#+/,'')).filter(Boolean))];
+const parseTags=v=>[...new Set(String(v||'').split(/[\n,\/]+|\s+(?=#)/g).map(x=>x.trim().replace(/^#+/,'')).filter(Boolean))];
 export default function UsersAdmin(){
- const [users,setUsers]=useState([]),[selected,setSelected]=useState(''),[msg,setMsg]=useState(''),[password,setPassword]=useState(''),[q,setQ]=useState('');
+ const [users,setUsers]=useState([]),[selected,setSelected]=useState(''),[msg,setMsg]=useState(''),[password,setPassword]=useState(''),[q,setQ]=useState(''),[tagText,setTagText]=useState('');
  async function load(){const r=await fetch('/api/admin/users',{cache:'no-store'});const d=await r.json();if(r.ok){setUsers(d.users||[]);setSelected(s=>s||(d.users?.[0]?.user_id||''));}else setMsg(d.error||'불러오기 실패')}
  useEffect(()=>{load()},[]);
  const list=useMemo(()=>users.filter(u=>(u.name+u.username+u.email).toLowerCase().includes(q.toLowerCase())),[users,q]); const u=users.find(x=>x.user_id===selected)||users[0];
+ useEffect(()=>{setTagText((u?.tags||[]).join(', '))},[u?.user_id]);
  function set(k,v){setUsers(p=>p.map(x=>x.user_id===u.user_id?{...x,[k]:v}:x))}
- async function save(extra={}){setMsg('저장 중...');const payload={...u,...extra,password:extra.password||undefined};const r=await fetch('/api/admin/users',{method:'PUT',headers:{'content-type':'application/json'},body:JSON.stringify(payload)});const d=await r.json();setMsg(r.ok?'저장되었습니다.':d.error||'실패');if(r.ok){setPassword('');load();}}
+ async function save(extra={}){setMsg('저장 중...');const payload={...u,tags:parseTags(tagText),...extra,password:extra.password||undefined};const r=await fetch('/api/admin/users',{method:'PUT',headers:{'content-type':'application/json'},body:JSON.stringify(payload)});const d=await r.json();setMsg(r.ok?'저장되었습니다.':d.error||'실패');if(r.ok){setPassword('');load();}}
  return <div className="adminPage"><PageTitle title="계정 & 권한 관리" desc="아이디·이메일·회원정보·권한을 한 곳에서 수정하고 비밀번호는 새 값으로 재설정할 수 있습니다."/>
  <div className="adminMemberLayout"><Card title="회원 계정"><Input placeholder="이름·아이디·이메일 검색" value={q} onChange={e=>setQ(e.target.value)}/><div className="adminNewsList">{list.map(x=><button key={x.user_id} className={x.user_id===u?.user_id?'active':''} onClick={()=>setSelected(x.user_id)}><span><b>{x.name||'이름 미등록'}</b><small>@{x.username} · {x.email}</small></span><Badge type={x.role==='admin'?'purple':x.status==='active'?'green':''}>{x.role} / {x.status}</Badge></button>)}</div></Card>
  {u&&<Card title={`${u.name||u.username} 계정 수정`} desc={msg||'현재 비밀번호는 보안상 조회할 수 없으며, 관리자는 새 비밀번호로 재설정할 수 있습니다.'}><div className="adminFormGrid">
@@ -21,7 +22,7 @@ export default function UsersAdmin(){
   <Field label="최종학력"><Input value={u.school||''} onChange={e=>set('school',e.target.value)}/></Field><Field label="활동지역"><Input value={u.area||''} onChange={e=>set('area',e.target.value)}/></Field>
   <Field label="등급"><select className="adminInput" value={u.tier||'Gold'} onChange={e=>set('tier',e.target.value)}><option>Gold</option><option>Platinum</option></select></Field><Field label="프로필 공개"><select className="adminInput" value={u.is_published?'public':'private'} onChange={e=>set('is_published',e.target.value==='public')}><option value="public">공개</option><option value="private">비공개</option></select></Field>
   <Field label="프로필 이미지 URL"><Input value={u.profile_image_url||''} onChange={e=>set('profile_image_url',e.target.value)}/></Field><Field label="유튜브 URL"><Input value={u.youtube_url||''} onChange={e=>set('youtube_url',e.target.value)} placeholder="https://youtu.be/..."/></Field>
-  <Field label="유튜브 썸네일 URL"><Input value={u.youtube_thumbnail_url||''} onChange={e=>set('youtube_thumbnail_url',e.target.value)}/></Field><Field label="해시태그"><Input value={(u.tags||[]).join(', ')} onChange={e=>set('tags',parseTags(e.target.value))}/></Field>
+  <Field label="유튜브 썸네일 URL"><Input value={u.youtube_thumbnail_url||''} onChange={e=>set('youtube_thumbnail_url',e.target.value)}/></Field><Field label="해시태그" hint="입력 예시: 마케팅,기획,디자인 · 영화/문화/기획 · #마케팅 #종교자"><Input value={tagText} onChange={e=>setTagText(e.target.value)} placeholder="마케팅,기획,디자인"/></Field>
   <Field label="소개"><Textarea rows={7} value={u.intro||''} onChange={e=>set('intro',e.target.value)}/></Field>
  </div><div className="adminActionRow"><button className="adminBtn primary" onClick={()=>save(password?{password}: {})}>전체 정보 저장</button></div></Card>}</div></div>
 }
