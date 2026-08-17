@@ -1,15 +1,16 @@
-# 화성인사이드 DESIGN v7.7 — Continuous Canvas Edition
+# 화성인사이드 v7.8 — 상세페이지 UX 핫픽스
 
-기준본: v7.6 Final Grand Frame Edition
+기준본: v7.7 Continuous Canvas Edition
 
-이번 버전은 레이아웃/DB/관리자/회원 데이터 구조를 변경하지 않고 색 연결감만 정교하게 다듬은 최종 디자인 refinement입니다.
+## 이번 변경
+- 상세페이지 순서: 강점 레이더 → 연결 가능성이 높은 멤버
+- 상세페이지 공유 기능
+  - 이미지로 저장: 상세 콘텐츠 영역을 PNG로 저장
+  - 링크 공유: 모바일 Web Share API 우선, 미지원 환경은 링크 복사
+- 경력 영역은 약 3개 항목 높이로 고정하고 추가 경력은 박스 내부 세로 스크롤
+- 모바일 유튜브 썸네일은 16:9 전체 노출(object-fit: contain), 좌우 잘림 방지
 
-## 변경점
-- Header가 독립된 흰 띠처럼 보이지 않고 Grand Frame과 동일한 화성인사이드 팔레트로 연결
-- Hero의 타이틀 영역과 우측 비주얼 영역에 동일 컬러 필드 적용
-- 의장 영상/인사말 영역도 Hero의 라벤더·핑크 계열 배경을 자연스럽게 이어받음
-- Platinum / 공지뉴스 / 40인 영역은 같은 팔레트를 단계적으로 더 옅게 사용
-- Footer까지 색의 흐름이 끊기지 않도록 전환감 보정
-- 기존 v7.6의 Grand Frame, Platinum Circle, 세로 ID 카드, 회원 데이터, 관리자 기능은 그대로 유지
-
-추가 SQL 없음.
+## 배포
+- 추가 Supabase SQL 없음
+- GitHub 루트에 전체 덮어쓰기
+- package.json에 html2canvas 의존성이 추가되어 Vercel 새 배포 시 자동 설치됨

@@ -34,7 +34,9 @@ export default function BrandIcon({name,size=20,className='',strokeWidth=1.8,tit
     brandSpark:<><circle cx="12" cy="12" r="9.2" {...p}/><path d="m12 5.4 1.55 4.05 4.05 1.55-4.05 1.55L12 16.6l-1.55-4.05L6.4 11l4.05-1.55L12 5.4Z" fill="currentColor" stroke="none"/></>,
     idCard:<><rect x="4" y="3" width="16" height="18" rx="3" {...p}/><circle cx="12" cy="9" r="2.5" {...p}/><path d="M7.8 17c.6-2.5 2-3.7 4.2-3.7s3.6 1.2 4.2 3.7M8 5.8h2M14 5.8h2" {...p}/></>,
     laurel:<><path d="M18.8 4.5C15.2 6.6 12.9 10 12.4 14.2c-.3 2.3.1 4.3 1 5.8" {...p}/><path d="M17.1 6.1c-1.6-.5-2.6-.2-3.5.8M15 8.7c-1.7-.3-2.8.2-3.6 1.3M13.5 11.6c-1.8 0-2.8.7-3.4 1.8M12.7 14.7c-1.7.4-2.5 1.2-2.8 2.4" {...p}/></>,
-    chevronDown:<><path d="m6 9 6 6 6-6" {...p}/></>
+    chevronDown:<><path d="m6 9 6 6 6-6" {...p}/></>,
+    share:<><circle cx="18" cy="5" r="2.3" {...p}/><circle cx="6" cy="12" r="2.3" {...p}/><circle cx="18" cy="19" r="2.3" {...p}/><path d="m8.1 10.9 7.8-4.6M8.1 13.1l7.8 4.6" {...p}/></>,
+    download:<><path d="M12 4v10M8 10l4 4 4-4M5 19h14" {...p}/></>
   };
   return <svg {...common}>{title&&<title>{title}</title>}{icons[name]||icons.sparkles}</svg>;
 }
