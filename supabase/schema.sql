@@ -20,6 +20,7 @@ create table if not exists public.members (
   age integer,
   gender text default '',
   public_email text default '',
+  phone text default '',
   school text default '',
   area text default '',
   tier text not null default 'Gold',
@@ -146,3 +147,9 @@ create table if not exists public.board_posts (
 alter table public.board_posts enable row level security;
 drop policy if exists "board_public_read" on public.board_posts;
 create policy "board_public_read" on public.board_posts for select using (is_published = true or author_id = auth.uid() or public.my_role() in ('admin','editor'));
+
+
+-- 개인정보 보호: 비로그인(anon) 클라이언트가 members 테이블을 직접 조회하지 못하게 합니다.
+-- 공개 페이지는 서버 API를 통해 비민감 정보만 제공합니다.
+revoke select on table public.members from anon;
+grant select on table public.members to authenticated;

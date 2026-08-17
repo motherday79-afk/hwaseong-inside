@@ -4,6 +4,7 @@ import { createClient } from '../../lib/supabase/client';
 
 const strengthLabels=['창의','연결','통찰','공감','실행','성장'];
 const defaultStrengths={창의:80,연결:80,통찰:80,공감:80,실행:80,성장:80};
+const parseTags=v=>[...new Set(String(v||'').split(/[\n,]+|\s+(?=#)/g).map(x=>x.trim().replace(/^#+/,'')).filter(Boolean))];
 
 export default function AccountClient({user}){
  const [m,setM]=useState(null);const [msg,setMsg]=useState('');const [uploading,setUploading]=useState(false);const [thumbUploading,setThumbUploading]=useState(false);
@@ -19,8 +20,8 @@ export default function AccountClient({user}){
   <section className="accountForm">
    <label>이름<input value={m.name||''} onChange={e=>set('name',e.target.value)}/></label><label>직업/직책<input value={m.job||''} onChange={e=>set('job',e.target.value)}/></label>
    <label className="wide">한 줄 소개 / 슬로건<input value={m.tagline||''} onChange={e=>set('tagline',e.target.value)} placeholder="예: 모두가 골고루 잘사는 성숙한 문화시민의 사회를 만듭니다."/></label>
-   <label>나이<input type="number" value={m.age||''} onChange={e=>set('age',Number(e.target.value))}/></label><label>성별<input value={m.gender||''} onChange={e=>set('gender',e.target.value)}/></label><label>공개 이메일<input value={m.public_email||''} onChange={e=>set('public_email',e.target.value)}/></label><label>최종학력<input value={m.school||''} onChange={e=>set('school',e.target.value)}/></label><label>활동지역<input value={m.area||''} onChange={e=>set('area',e.target.value)}/></label>
-   <label className="wide">전문분야 / 해시태그<input value={(m.tags||[]).join(', ')} onChange={e=>set('tags',e.target.value.split(',').map(v=>v.trim()).filter(Boolean))} placeholder="영화제작, 콘텐츠기획, AI콘텐츠제작"/></label>
+   <label>나이<input type="number" value={m.age||''} onChange={e=>set('age',Number(e.target.value))}/></label><label>성별<input value={m.gender||''} onChange={e=>set('gender',e.target.value)}/></label><label>공개 이메일<input value={m.public_email||''} onChange={e=>set('public_email',e.target.value)}/></label><label>전화번호<input type="tel" value={m.phone||''} onChange={e=>set('phone',e.target.value)} placeholder="010-0000-0000"/></label><label>최종학력<input value={m.school||''} onChange={e=>set('school',e.target.value)}/></label><label>활동지역<input value={m.area||''} onChange={e=>set('area',e.target.value)}/></label>
+   <label className="wide">전문분야 / 해시태그<input value={(m.tags||[]).join(', ')} onChange={e=>set('tags',parseTags(e.target.value))} placeholder="영화제작, 콘텐츠기획, AI콘텐츠제작"/></label>
    <label className="wide">개인정보 소개<textarea rows="8" value={m.intro||''} onChange={e=>set('intro',e.target.value)} placeholder="상세페이지의 ‘개인정보 소개’ 영역에 노출됩니다."/></label>
    <label className="wide">프로필 유튜브 URL<input value={m.youtube_url||''} onChange={e=>set('youtube_url',e.target.value)} placeholder="https://youtu.be/..."/></label>
    <div className="wide accountVideoThumbUpload"><div className="accountVideoThumbPreview">{m.youtube_thumbnail_url?<img src={m.youtube_thumbnail_url} alt="영상 썸네일 미리보기"/>:<span>16:9 영상 썸네일</span>}</div><div><b>상세페이지 유튜브 썸네일</b><p>URL을 입력하지 않고 이미지 파일을 직접 등록합니다. 권장 1600×900px.</p><label className="accountUploadBtn">{thumbUploading?'업로드 중...':'썸네일 이미지 선택'}<input hidden type="file" accept="image/jpeg,image/png,image/webp" onChange={e=>uploadAsset(e,'youtube_thumbnail_url','video-thumbnails',setThumbUploading)}/></label>{m.youtube_thumbnail_url&&<button type="button" className="accountRemoveThumb" onClick={()=>set('youtube_thumbnail_url','')}>썸네일 삭제</button>}</div></div>

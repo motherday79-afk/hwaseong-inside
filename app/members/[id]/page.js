@@ -8,15 +8,17 @@ import BrandIcon from '../../../components/BrandIcon';
 import SamplePortrait from '../../../components/SamplePortrait';
 import ProfileShareActions from '../../../components/ProfileShareActions';
 import { DEFAULT_STRENGTH_COPY } from '../../../data/adminDefaults';
+import { getCurrentUser } from '../../../lib/auth';
 export const dynamic='force-dynamic';
 
 const defaultStrengths={창의:80,연결:80,통찰:80,공감:80,실행:80,성장:80};
 const cardOrder=['창의','공감','연결','실행','통찰','성장'];
 const icons={창의:'sparkles',공감:'heart',연결:'link',실행:'bolt',통찰:'eye',성장:'trend'};
 const cleanLegacy=(u='')=>String(u||'').startsWith('/assets/members/')?'':String(u||'');
+const normalizeTags=(tags=[])=>[...new Set((Array.isArray(tags)?tags:[tags]).flatMap(v=>String(v||'').split(/[\n,]+|(?=#)/g)).flatMap(v=>v.trim().startsWith('#')?v.trim().split(/\s+(?=#)/g):[v]).map(v=>v.trim().replace(/^#+/,'')).filter(Boolean))];
 
 export default async function MemberDetail({params}){
- const {id}=await params; const admin=createAdminClient();
+ const {id}=await params; const admin=createAdminClient(); const viewer=await getCurrentUser(); const canViewContact=viewer?.status==='active';
  const [{data:siteState},{data:m}]=await Promise.all([
    admin.from('site_state').select('payload').eq('id','main').maybeSingle(),
    admin.from('members').select('*, careers(*)').eq('id',Number(id)).eq('is_published',true).maybeSingle()
@@ -37,8 +39,9 @@ export default async function MemberDetail({params}){
       <article className="v7ProfileInfo">
         <span className="v7Tier"><BrandIcon name="gem" size={13}/> {m.tier||'Gold'} Member</span><h1>{m.name}</h1><h2>{m.job}</h2>
         <p className="v7Tagline">{m.tagline||m.intro?.split('\n')[0]||'화성인사이드와 함께 성장하는 멤버입니다.'}</p>
-        <dl><div><dt><BrandIcon name="clock" size={13}/>나이</dt><dd>{m.age?`${m.age}세`:'-'}</dd></div><div><dt><BrandIcon name="briefcase" size={13}/>직무 / 부문</dt><dd>{m.job||'-'}</dd></div><div><dt><BrandIcon name="user" size={13}/>성별</dt><dd>{m.gender||'-'}</dd></div><div><dt><BrandIcon name="mail" size={13}/>이메일</dt><dd>{m.public_email||'-'}</dd></div><div><dt><BrandIcon name="graduation" size={13}/>최종학력</dt><dd>{m.school||'-'}</dd></div><div><dt><BrandIcon name="location" size={13}/>활동 지역</dt><dd>{m.area||'-'}</dd></div></dl>
-        <div className="v7Tags">{(m.tags||[]).map(t=><span key={t}>{t}</span>)}</div>
+        <dl><div><dt><BrandIcon name="clock" size={13}/>나이</dt><dd>{m.age?`${m.age}세`:'-'}</dd></div><div><dt><BrandIcon name="briefcase" size={13}/>직무 / 부문</dt><dd>{m.job||'-'}</dd></div><div><dt><BrandIcon name="user" size={13}/>성별</dt><dd>{m.gender||'-'}</dd></div>{canViewContact&&<><div><dt><BrandIcon name="mail" size={13}/>이메일</dt><dd>{m.public_email||'-'}</dd></div><div><dt><BrandIcon name="phone" size={13}/>전화번호</dt><dd>{m.phone||'-'}</dd></div></>}<div><dt><BrandIcon name="graduation" size={13}/>최종학력</dt><dd>{m.school||'-'}</dd></div><div><dt><BrandIcon name="location" size={13}/>활동 지역</dt><dd>{m.area||'-'}</dd></div></dl>
+        {!canViewContact&&<div className="v79ContactLocked"><BrandIcon name="lock" size={14}/><span>이메일과 전화번호는 로그인한 화성인사이드 회원에게만 공개됩니다.</span></div>}
+        <div className="v7Tags">{normalizeTags(m.tags).map(t=><span key={t}>#{t}</span>)}</div>
       </article>
     </section>
     <section className="v7StoryGrid">

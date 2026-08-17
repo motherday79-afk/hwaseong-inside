@@ -24,6 +24,8 @@ export default function BrandIcon({name,size=20,className='',strokeWidth=1.8,tit
     eye:<><path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6Z" {...p}/><circle cx="12" cy="12" r="2.4" {...p}/></>,
     trend:<><path d="M4 17 9 12l3 3 7-8M14 7h5v5" {...p}/></>,
     mail:<><rect x="3" y="5" width="18" height="14" rx="2" {...p}/><path d="m4 7 8 6 8-6" {...p}/></>,
+    phone:<><path d="M7.2 3.8 5 5.2c-.8.5-1.1 1.5-.8 2.4 2 6.1 6.1 10.2 12.2 12.2.9.3 1.9 0 2.4-.8l1.4-2.2-4.2-3-1.8 1.8c-2.7-1.3-4.5-3.1-5.8-5.8L10.2 8 7.2 3.8Z" {...p}/></>,
+    lock:<><rect x="5" y="10" width="14" height="10" rx="2" {...p}/><path d="M8 10V7a4 4 0 0 1 8 0v3M12 14v2.5" {...p}/></>,
     play:<><rect x="3" y="6" width="18" height="12" rx="4" {...p}/><path d="m10 9 5 3-5 3V9Z" {...p}/></>,
     instagram:<><rect x="3.5" y="3.5" width="17" height="17" rx="5" {...p}/><circle cx="12" cy="12" r="4" {...p}/><circle cx="17.5" cy="6.7" r=".8" fill="currentColor" stroke="none"/></>,
     linkedin:<><rect x="4" y="9" width="3" height="10" {...p}/><circle cx="5.5" cy="5.5" r="1.5" fill="currentColor" stroke="none"/><path d="M11 19V9h3v1.7c1-1.3 2.1-2 3.7-2 2.4 0 3.3 1.7 3.3 4.4V19h-3v-5.3c0-1.5-.5-2.3-1.8-2.3-1.5 0-2.2 1-2.2 2.8V19h-3Z" fill="currentColor" stroke="none"/></>,
